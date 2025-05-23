@@ -1,6 +1,6 @@
 'use client'
 
-import { useTripHook } from "@/hooks/useTripHook"
+import useTripHook from "@/hooks/useTripHook"
 
 function formatDate(dateString) {
   const options = { year: 'numeric', month: 'short', day: 'numeric' }

@@ -1,10 +1,9 @@
-// src/hooks/TripHook.js
 'use client'
 
 import { useEffect, useState } from "react"
 import { getAllTrips } from "@/services/api"
 
-function useTripHook() {
+export default function useTripHook() {
   const [trips, setTrips] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -28,5 +27,3 @@ function useTripHook() {
 
   return { trips, setTrips, loading, error }
 }
-
-export default useTripHook
