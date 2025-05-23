@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react"
 import { getAllTrips } from "@/services/api"
 
-export const useTripHook = () => {
+function useTripHook() {
   const [trips, setTrips] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -28,3 +28,5 @@ export const useTripHook = () => {
 
   return { trips, setTrips, loading, error }
 }
+
+export default useTripHook
