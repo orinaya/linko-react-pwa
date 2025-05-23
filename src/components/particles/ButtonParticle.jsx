@@ -19,7 +19,7 @@ function ButtonParticle({
       {onClick ? (
         <button
           type="button"
-          className={`group btn ${colorBg} ${colorText} ${className} flex items-center justify-center text-center px-4 py-2 rounded-full font-semibold text-base transition-transform duration-250 ease-in-out
+          className={`group btn ${colorBg} ${colorText} ${className} flex items-center justify-center text-center px-4 py-2 rounded-lg font-semibold text-base transition-transform duration-250 ease-in-out
           ${colorBgHover} ${colorTextHover}`}
           onClick={onClick}
         >
@@ -33,7 +33,7 @@ function ButtonParticle({
       ) : routeLink ? (
         <Link
           href={routeLink}
-          className={`group btn ${colorBg} ${colorText} ${className} flex items-center justify-center text-center px-4 py-2 rounded-full font-semibold text-base transition-transform duration-250 ease-in-out
+          className={`group btn ${colorBg} ${colorText} ${className} flex items-center justify-center text-center px-4 py-2 rounded-lg font-semibold text-base transition-transform duration-250 ease-in-out
           ${colorBgHover} ${colorTextHover}`}
           target={target}
         >

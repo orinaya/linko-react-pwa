@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 function LayoutProviders({ children }) {
   const pathname = usePathname();
   return (
-    <div className={pathname !== '/' ? 'm-6' : 'm-0'}>
+    <div className={pathname !== '/' ? 'm-6 pb-28' : 'm-0'}>
       <UserProvider>
         <GroupProvider>
           {children}
