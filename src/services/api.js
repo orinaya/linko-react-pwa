@@ -1,21 +1,55 @@
-// import axios from 'axios'
-// require('dotenv').config()
+import axios from 'axios'
+import { createClient } from '@supabase/supabase-js'
 
-// const api = axios.create({
-//   baseURL: Config.API_URL,
-//   headers: {
-//     'Content-Type': 'application/json',
-//     Accept: 'application/json'
-//   },
-//   timeout: 10000
-// })
 
-// const hello = {
-  
-// }
+const supabaseUrl = `${process.env.NEXT_PUBLIC_SUPABASE_API_URL}`
+const supabaseKey = `${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`
+const supabase = createClient(supabaseUrl, supabaseKey)
 
-// export {
+async function getAllUsers() {
+  const { data, error } = await supabase
+    .from('User')
+    .select('*')
 
-// }
+  if (error) {
+    console.error('Erreur lors de la récupération :', error)
+    return []
+  }
+
+  return data
+}
+
+async function getAllGroups() {
+  const { data, error } = await supabase
+    .from('Group')
+    .select('*')
+
+  if (error) {
+    console.error('Erreur lors de la récupération :', error)
+    return []
+  }
+
+  return data
+}
+
+async function getAllTrips() {
+  const { data, error } = await supabase
+    .from('Trip')
+    .select('*')
+
+  if (error) {
+    console.error('Erreur lors de la récupération :', error)
+    return []
+  }
+
+  return data
+}
+
+
+export {
+  getAllUsers,
+  getAllGroups,
+  getAllTrips
+}
 
 

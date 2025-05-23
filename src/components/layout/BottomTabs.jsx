@@ -6,23 +6,23 @@ import { RiHomeSmile2Line, RiHomeSmile2Fill } from 'react-icons/ri';
 import { LuCircleAlert } from 'react-icons/lu';
 import { IoAlertCircle } from 'react-icons/io5';
 import { FaRegCompass } from 'react-icons/fa';
-import { PiSuitcase } from 'react-icons/pi';
 import { HiOutlineUserGroup, HiMiniUserGroup } from 'react-icons/hi2';
+import { BsSuitcaseLg, BsSuitcaseLgFill } from 'react-icons/bs';
 
 const icons = {
   HomeTabs: { icon: RiHomeSmile2Line, iconActive: RiHomeSmile2Fill },
-  AlertTabs: { icon: LuCircleAlert, iconActive: IoAlertCircle },
-  LocateTabs: { icon: FaRegCompass, iconActive: FaRegCompass },
-  TripsTabs: { icon: PiSuitcase, iconActive: PiSuitcase },
   GroupsTabs: { icon: HiOutlineUserGroup, iconActive: HiMiniUserGroup },
+  LocateTabs: { icon: FaRegCompass, iconActive: FaRegCompass },
+  TripsTabs: { icon: BsSuitcaseLg, iconActive: BsSuitcaseLgFill },
+  AlertTabs: { icon: LuCircleAlert, iconActive: IoAlertCircle },
 };
 
 const tabs = [
   { name: 'HomeTabs', label: 'Accueil', path: '/home' },
-  { name: 'AlertTabs', label: 'Alertes', path: '/alert' },
+  { name: 'GroupsTabs', label: 'Groupes', path: '/groups' },
   { name: 'LocateTabs', label: 'Localiser', path: '/', isPrimary: true },
   { name: 'TripsTabs', label: 'Sorties', path: '/trips' },
-  { name: 'GroupsTabs', label: 'Groupes', path: '/groups' },
+  { name: 'AlertTabs', label: 'Alertes', path: '/alert' },
 ];
 
 export default function BottomTabs() {
@@ -47,9 +47,9 @@ export default function BottomTabs() {
             className={`
               flex-1 flex flex-col items-center justify-center transition-colors duration-200
               ${isPrimary
-                ? 'bg-yellow-400 text-yellow-50 rounded-xl w-12 h-full'
+                ? 'bg-[#FF8F33] text-yellow-50 rounded-xl w-12 h-full'
                 : `py-3 rounded-full ${isActive
-                  ? 'bg-transparent text-yellow-400'
+                  ? 'bg-transparent text-[#FF8F33]'
                   : 'text-white hover:bg-gray-800'
                 }`
               }

@@ -7,18 +7,34 @@ export default function HeaderComponent() {
   const pathname = usePathname();
 
 
-  return (
-    <div className="flex items-center justify-between p-3.5 bg-transparent">
-      {pathname === '/home' ?
-        (<h1 className="font-bold text-2xl">Bonjour Jean,</h1>)
-        : (
-          <h1 className="font-bold text-2xl">Titre</h1>
-        )
-      }
+  let title;
+  switch (pathname) {
+    case '/home':
+      title = 'Bonjour Jean,';
+      break;
+    case '/alerts':
+      title = 'Les alertes';
+      break;
+    case '/trips':
+      title = 'Les sorties';
+      break;
+    case '/groups':
+      title = 'Gestion des groupes';
+      break;
+    default:
+      title = 'Titre';
+  }
 
-      <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
-        <span className="text-green-700 font-bold">JB</span>
-      </div>
-    </div>
+  return (
+    <>
+      {pathname !== '/' && (
+        <div className="flex items-center justify-between py-3.5 bg-transparent">
+          <h1 className="font-bold text-2xl">{title}</h1>
+          <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
+            <span className="text-green-700 font-bold">JB</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
