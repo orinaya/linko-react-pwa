@@ -1,6 +1,6 @@
 'use client'
 
-import useTripHook from "@/hooks/TripHook";
+import useTripHook from "@/hooks/useTripHook";
 
 function Trips() {
   const { trips, setTrips } = useTripHook()
