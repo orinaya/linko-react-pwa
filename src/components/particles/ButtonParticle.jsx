@@ -5,9 +5,9 @@ function ButtonParticle({
   colorBg,
   colorText,
   routeLink,
-  iconBefore,
-  iconAfter,
-  iconCenter,
+  iconBefore: IconBefore,
+  iconAfter: IconAfter,
+  iconCenter: IconCenter,
   target,
   onClick,
   className,
@@ -23,12 +23,10 @@ function ButtonParticle({
           ${colorBgHover} ${colorTextHover}`}
           onClick={onClick}
         >
-          {iconBefore && <i className={`link-icon-before icomoon mr-2 icon-${iconBefore}`} />}
+          {IconBefore && <IconBefore className="mr-2" />}
           {title}
-          {iconCenter && (
-            <i className={`link-icon-before icomoon icon-${iconCenter} ${className}`} />
-          )}
-          {iconAfter && <i className={`link-icon-after icomoon ml-2 icon-${iconAfter}`} />}
+          {IconCenter && <IconCenter className={`mx-2 ${className}`} />}
+          {IconAfter && <IconAfter className="ml-2" />}
         </button>
       ) : routeLink ? (
         <Link
@@ -37,12 +35,10 @@ function ButtonParticle({
           ${colorBgHover} ${colorTextHover}`}
           target={target}
         >
-          {iconBefore && <i className={`link-icon-before icomoon mr-2 icon-${iconBefore}`} />}
+          {IconBefore && <IconBefore className="mr-2" />}
           {title}
-          {iconCenter && (
-            <i className={`link-icon-before icomoon icon-${iconCenter} ${className}`} />
-          )}
-          {iconAfter && <i className={`link-icon-after icomoon ml-2 icon-${iconAfter}`} />}
+          {IconCenter && <IconCenter className={`mx-2 ${className}`} />}
+          {IconAfter && <IconAfter className="ml-2" />}
         </Link>
       ) : null}
     </>
