@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { PiNotePencil } from "react-icons/pi";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
-import ButtonParticle from "./particles/ButtonParticle";
+import { useRouter } from "next/navigation";
+import { slugify } from "@/utils/slugify";
 
 function CardComponent({
+  id,
   title,
   startDate,
   endDate,
   initials = "AA",
-
 }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,8 +25,14 @@ function CardComponent({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const router = useRouter();
+  const handleClick = () => {
+    const slug = slugify(title);
+    router.push(`/trips/${id}-${slug}`);
+  };
+
   return (
-    <li className="flex gap-4 bg-white p-4 rounded-lg relative">
+    <li className="flex gap-4 bg-white p-4 rounded-lg relative" onClick={handleClick}>
       <div className="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center">
         <span className="text-green-700 font-bold">{initials}</span>
       </div>

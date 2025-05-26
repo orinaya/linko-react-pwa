@@ -1,4 +1,3 @@
-// components/TripSection.jsx
 import CardComponent from "./CardComponent";
 
 function SectionComponent({ title, datas = [], formatDate }) {
@@ -16,6 +15,7 @@ function SectionComponent({ title, datas = [], formatDate }) {
           {datas.map((data) => (
             <CardComponent
               key={data.id}
+              id={data.id}
               title={data.title}
               startDate={formatDate(data.start_date)}
               endDate={formatDate(data.end_date)}
