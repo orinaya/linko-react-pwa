@@ -31,34 +31,42 @@ function HeaderComponent() {
 
   return (
     <>
-      <div className="flex items-center justify-center">
-        <img
-          src="/assets/images/linko-orange.svg"
-          alt="Linko Logo"
-          className="w-18 h-auto object-contain"
-        />
-      </div>
       {pathname !== '/' && (
-        <div className="flex items-center justify-between py-3.5 bg-transparent">
-
-          {isDynamicPage ? (
-            <ButtonParticle
-              title="Retour"
-              colorBg="transparent"
-              colorText="text-[#0162EF]"
-              colorBgHover="hover:bg-blue-700"
-              colorTextHover="hover:text-gray-100"
-              iconBefore={IoIosArrowBack}
-              onClick={() => router.back()}
-            />
-          ) : (
-            <div className="text-xl font-bold">{title}</div>
+        <>
+          {pathname !== '/account' && (
+            <div className="flex items-center justify-center">
+              <img
+                src="/assets/images/linko-orange.svg"
+                alt="Linko Logo"
+                className="w-18 h-auto object-contain"
+              />
+            </div>
           )}
+          <div className="flex items-center justify-between py-3.5 bg-transparent">
 
-          <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
-            <span className="text-green-700 font-bold">JB</span>
+            {isDynamicPage || pathname == '/account' ? (
+              <ButtonParticle
+                title="Retour"
+                colorBg="transparent"
+                colorText="text-[#0162EF]"
+                colorBgHover="hover:bg-blue-700"
+                colorTextHover="hover:text-gray-100"
+                iconBefore={IoIosArrowBack}
+                onClick={() => router.back()}
+              />
+            ) : (
+              <div className="text-xl font-bold">{title}</div>
+            )}
+
+            {pathname !== '/account' && (
+              <div onClick={() => router.push('/account')} className="cursor-pointer">
+                <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
+                  <span className="text-green-700 font-bold">JB</span>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
+        </>
       )}
     </>
   );
