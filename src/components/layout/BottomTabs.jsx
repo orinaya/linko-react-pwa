@@ -30,7 +30,7 @@ export default function BottomTabs() {
 
   return (
     <>
-      {pathname !== '/account' && (
+      {pathname !== '/account' || pathname !== '/' && (
         <nav
           className="fixed bottom-0 left-0 transform flex bg-gray-50 h-17 w-full border-t-gray-200 border-t-1"
         >
