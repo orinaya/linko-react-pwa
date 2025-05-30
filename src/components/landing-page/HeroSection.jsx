@@ -15,8 +15,22 @@ function HeroSection() {
               </h1>
               <div className="self-stretch justify-start text-[#1a0c00] text-xl font-medium ">Une plateforme pensée pour les enseignants, animateurs et responsables de groupes d’enfants. Organisez, suivez, informez… sans stress.</div>
               <div className="flex items-center space-x-4">
-                <ButtonParticle title="Essayer gratuitement" colorBg="bg-[#FF7401] text-[#FFFFFF]" routeLink='/login' iconBefore={FiZap} />
-                <ButtonParticle title="Découvrir nos fonctionnalités" colorBg="bg-[#FFFFFF] text-[#FF7401] border-solid border-[#FF7401] border-1" routeLink='#features' iconBefore={FiSettings} />
+                <ButtonParticle
+                  title="Essayer gratuitement"
+                  variant="primary"
+                  color="orange"
+                  routeLink="/login"
+                  className="w-fit"
+                  iconBefore={FiZap}
+                />
+                <ButtonParticle
+                  title="Découvrir nos fonctionnalités"
+                  variant="secondary"
+                  color="orange"
+                  routeLink="#features"
+                  className="w-fit"
+                  iconBefore={FiSettings}
+                />
               </div>
             </div>
             <div className="relative flex space-x-4">

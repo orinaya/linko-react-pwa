@@ -1,3 +1,5 @@
+'use client'
+
 import { FiMail, FiPhone, FiUser, FiUserPlus } from "react-icons/fi";
 import ButtonParticle from "../particles/ButtonParticle";
 import { FaArrowUp } from "react-icons/fa";
@@ -24,8 +26,22 @@ function FooterSection() {
                 </span>
               </h2>
               <div className="flex flex-col md:flex-row gap-4">
-                <ButtonParticle title="S'inscrire" colorBg="bg-[#FF7401] text-[#FFFFFF]" routeLink='#price' className="w-fit" iconBefore={FiUser} />
-                <ButtonParticle title="Se connecter" colorBg="bg-[#FFFFFF] text-[#FF7401] border-solid border-[#FF7401] border-1" routeLink='#price' className="w-fit" iconBefore={FiUserPlus} />
+                <ButtonParticle
+                  title="S'inscrire"
+                  variant="primary"
+                  color="orange"
+                  routeLink="/signup"
+                  className="w-fit"
+                  iconBefore={FiUserPlus}
+                />
+                <ButtonParticle
+                  title="Se connecter"
+                  variant="secondary"
+                  color="orange"
+                  routeLink="/login"
+                  className="w-fit"
+                  iconBefore={FiUser}
+                />
               </div>
             </div>
             <div>
@@ -72,7 +88,14 @@ function FooterSection() {
           </div>
 
           <div className="w-full flex justify-center my-16">
-            <ButtonParticle title="Retourner en haut" colorBg="bg-[#FFFFFF] text-[#0162EF]" routeLink='#price' className="w-fit" iconBefore={FaArrowUp} />
+            <ButtonParticle
+              title="Retourner en haut"
+              variant="secondary"
+              color="blue"
+              onClick={() => document.getElementById('home-navbar').scrollIntoView({ behavior: 'smooth' })}
+              className="w-fit"
+              iconBefore={FaArrowUp}
+            />
           </div>
 
 

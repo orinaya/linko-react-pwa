@@ -1,164 +1,164 @@
 @import "tailwindcss";
 /* Polices Mundial */
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialRegular.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialRegular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialItalic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialBold.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialBoldItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialBoldItalic.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialBlack.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialBlack.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialBlackItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialBlackItalic.otf") format("opentype");
   font-weight: 900;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialDemibold.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialDemibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialDemiboldItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialDemiboldItalic.otf") format("opentype");
   font-weight: 600;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialLight.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialLight.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialLightItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialLightItalic.otf") format("opentype");
   font-weight: 300;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialThin.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialThin.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialThinItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialThinItalic.otf") format("opentype");
   font-weight: 100;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialHair.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialHair.otf") format("opentype");
   font-weight: 50;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Mundial';
-  src: url('/assets/fonts/mundial/MundialHairItalic.otf') format('opentype');
+  font-family: "Mundial";
+  src: url("/assets/fonts/mundial/MundialHairItalic.otf") format("opentype");
   font-weight: 50;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Regular.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Italic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Medium.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Medium_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Medium_Italic.otf") format("opentype");
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Bold.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Bold_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Bold_Italic.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Extra_Bold.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Extra_Bold.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Extra_Bold_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Extra_Bold_Italic.otf") format("opentype");
   font-weight: 800;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Ultra.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Ultra.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Ultra_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Ultra_Italic.otf") format("opentype");
   font-weight: 900;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Black.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Black.otf") format("opentype");
   font-weight: 950;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Grenadine';
-  src: url('/assets/fonts/grenadine/Grenadine_MVB_Black_Italic.otf') format('opentype');
+  font-family: "Grenadine";
+  src: url("/assets/fonts/grenadine/Grenadine_MVB_Black_Italic.otf") format("opentype");
   font-weight: 950;
   font-style: italic;
 }
 :root {
-  --background: #F7F7F7;
+  --background: #f7f7f7;
   --foreground: #171717;
 }
 
@@ -175,21 +175,20 @@
     --foreground: #ededed;
   }
 } */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Mundial', Arial, Helvetica, sans-serif;
+  font-family: "Mundial", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
 
-h2{
-  
-}
-
 .font-grenadine {
-  font-family: 'Grenadine', Arial, Helvetica, sans-serif;
+  font-family: "Grenadine", Arial, Helvetica, sans-serif;
 }

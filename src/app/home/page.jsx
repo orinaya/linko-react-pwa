@@ -1,5 +1,6 @@
 'use client'
 
+import ProtectedRoute from "@/components/layout/ProtectedRoutes"
 import useTripHook from "@/hooks/useTripHook"
 import { formatLongDate } from "@/utils/date"
 
@@ -14,29 +15,31 @@ function Home() {
 
   return (
     <>
-      <h2 className="text-xl font-semibold mb-4">Sorties en cours</h2>
+      <ProtectedRoute>
+        <h2 className="text-xl font-semibold mb-4">Sorties en cours</h2>
 
-      {loading && <p>Chargement...</p>}
-      {error && <p className="text-red-500">Erreur : {error.message}</p>}
+        {loading && <p>Chargement...</p>}
+        {error && <p className="text-red-500">Erreur : {error.message}</p>}
 
-      <div>
-        {ongoingTrips.length > 0 ? (
-          <ul className="flex flex-col gap-4">
-            {ongoingTrips.map((trip) => (
-              <li key={trip.id} className="bg-white p-4 rounded-lg shadow">
-                <p className="font-bold">{trip.title}</p>
-                <p>{trip.description}</p>
-                <p>Début : {formatLongDate(trip.start_date)}</p>
-                <p>Fin : {formatLongDate(trip.end_date)}</p>
-                <p>Lieu : {trip.place}</p>
-                <p>État : {trip.state}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          !loading && <p>Aucune sortie en cours</p>
-        )}
-      </div>
+        <div>
+          {ongoingTrips.length > 0 ? (
+            <ul className="flex flex-col gap-4">
+              {ongoingTrips.map((trip) => (
+                <li key={trip.id} className="bg-white p-4 rounded-lg shadow">
+                  <p className="font-bold">{trip.title}</p>
+                  <p>{trip.description}</p>
+                  <p>Début : {formatLongDate(trip.start_date)}</p>
+                  <p>Fin : {formatLongDate(trip.end_date)}</p>
+                  <p>Lieu : {trip.place}</p>
+                  <p>État : {trip.state}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            !loading && <p>Aucune sortie en cours</p>
+          )}
+        </div>
+      </ProtectedRoute>
     </>
   )
 }

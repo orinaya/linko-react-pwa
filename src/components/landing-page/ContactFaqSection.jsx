@@ -122,7 +122,14 @@ function ContactFaqSection() {
                   placeholder="Votre message..."
                 />
               </div>
-              <ButtonParticle title="Envoyer le message" colorBg="bg-[#0162EF] text-[#FFFFFF]" iconBefore={LuSend} className="w-full" onClick={handleSubmit} />
+              <ButtonParticle
+                title="Envoyer le message"
+                variant="primary"
+                color="blue"
+                onClick={handleSubmit}
+                className="w-full"
+                iconBefore={LuSend}
+              />
             </div>
           </div>
 
@@ -154,7 +161,14 @@ function ContactFaqSection() {
             </div>
 
             <div className="mt-6 text-center">
-              <ButtonParticle title="Voir plus de questions" colorBg="bg-[#FFE3CC] text-[#FF7401]" iconBefore={FiEye} className="w-fit" routeLink="/" />
+              <ButtonParticle
+                title="Voir plus de questions"
+                variant="tertiary"
+                color="orange"
+                routeLink="/"
+                className="w-fit"
+                iconBefore={FiEye}
+              />
             </div>
           </div>
         </div >

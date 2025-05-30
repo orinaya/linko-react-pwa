@@ -29,9 +29,13 @@ function HeaderComponent() {
       title = 'Titre';
   }
 
+  const hiddenHeaderRoutes = ['/', '/account', '/locate'];
+
+  const shouldShowHeader = !hiddenHeaderRoutes.includes(pathname);
+
   return (
     <>
-      {pathname !== '/' && (
+      {shouldShowHeader && (
         <>
           {pathname !== '/account' && (
             <div className="flex items-center justify-center">
@@ -46,13 +50,12 @@ function HeaderComponent() {
 
             {isDynamicPage || pathname == '/account' ? (
               <ButtonParticle
-                title="Retour"
-                colorBg="transparent"
-                colorText="text-[#0162EF]"
-                colorBgHover="hover:bg-blue-700"
-                colorTextHover="hover:text-gray-100"
-                iconBefore={IoIosArrowBack}
+                title="Rettour"
+                variant="ghost"
+                color="blue"
                 onClick={() => router.back()}
+                className="w-fit"
+                iconBefore={IoIosArrowBack}
               />
             ) : (
               <div className="text-xl font-bold">{title}</div>

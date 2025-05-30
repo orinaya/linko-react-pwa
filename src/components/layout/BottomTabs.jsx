@@ -20,17 +20,19 @@ const icons = {
 const tabs = [
   { name: 'HomeTabs', label: 'Accueil', path: '/home' },
   { name: 'GroupsTabs', label: 'Groupes', path: '/groups' },
-  { name: 'LocateTabs', label: 'Localiser', path: '/', isPrimary: true },
+  { name: 'LocateTabs', label: 'Localiser', path: '/locate', isPrimary: true },
   { name: 'TripsTabs', label: 'Sorties', path: '/trips' },
   { name: 'AlertTabs', label: 'Alertes', path: '/alert' },
 ];
 
 export default function BottomTabs() {
   const pathname = usePathname();
+  const hiddenTabRoutes = ['/', '/login', '/register'];
 
+  const shouldShowTabs = !hiddenTabRoutes.includes(pathname);
   return (
     <>
-      {pathname !== '/account' || pathname !== '/' && (
+      {shouldShowTabs && (
         <nav
           className="fixed bottom-0 left-0 transform flex bg-gray-50 h-17 w-full border-t-gray-200 border-t-1"
         >

@@ -11,6 +11,7 @@ import FormInputParticle from '@/components/particles/FormInputParticle';
 import SectionComponent from "@/components/SectionComponent";
 import BottomSheetComponent from '@/components/BottomSheetComponent';
 import { formatDate, getTodayDateString } from "@/utils/date";
+import ProtectedRoute from "@/components/layout/ProtectedRoutes";
 
 function Trips() {
   const { trips, setTrips } = useTripHook()
@@ -36,68 +37,67 @@ function Trips() {
 
   return (
     <>
-      <ButtonParticle
-        title="Créer une sortie"
-        colorBg="bg-[#0162EF]"
-        colorText="text-[#edf9ff]"
-        colorBgHover="hover:bg-blue-700"
-        colorTextHover="hover:text-gray-100"
-        iconAfter={IoFootstepsOutline}
-        onClick={() => setOpen(true)}
-        className="w-full"
-      />
+      <ProtectedRoute>
+        <ButtonParticle
+          title="Créer une sortie"
+          variant="primary"
+          color="blue"
+          onClick={() => setOpen(true)}
+          className="w-full"
+          iconBefore={IoFootstepsOutline}
+        />
+        <SectionComponent title="Sorties en cours" datas={ongoingTrips} formatDate={formatDate} />
+        <SectionComponent title="Sorties à venir" datas={upcomingTrips} formatDate={formatDate} />
+        <SectionComponent title="Sorties terminées" datas={pastTrips} formatDate={formatDate} />
 
-      <SectionComponent title="Sorties en cours" datas={ongoingTrips} formatDate={formatDate} />
-      <SectionComponent title="Sorties à venir" datas={upcomingTrips} formatDate={formatDate} />
-      <SectionComponent title="Sorties terminées" datas={pastTrips} formatDate={formatDate} />
-
-      <BottomSheetComponent isOpen={open} onClose={() => setOpen(false)}>
-        <form className="flex flex-col gap-4">
-          <FormInputParticle
-            label="Nom de la sortie"
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Entrez le nom de la sortie"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <div className='flex gap-4'>
+        <BottomSheetComponent isOpen={open} onClose={() => setOpen(false)}>
+          <form className="flex flex-col gap-4">
             <FormInputParticle
-              label="Date de début"
-              type="date"
-              id="startDate"
-              name="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              label="Nom de la sortie"
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Entrez le nom de la sortie"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
+            <div className='flex gap-4'>
+              <FormInputParticle
+                label="Date de début"
+                type="date"
+                id="startDate"
+                name="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
 
-            <FormInputParticle
-              label="Date de fin"
-              type="date"
-              id="endDate"
-              name="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              <FormInputParticle
+                label="Date de fin"
+                type="date"
+                id="endDate"
+                name="endDate"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+
+
+            <MultiselectParticle
+              label="Groupe(s)"
+              options={groups}
+              selected={selectedGroups}
+              onChange={setSelectedGroups}
             />
-          </div>
-
-
-          <MultiselectParticle
-            label="Groupe(s)"
-            options={groups}
-            selected={selectedGroups}
-            onChange={setSelectedGroups}
-          />
-          <ImageInputParticle
-            label="Image de la sortie"
-            onChange={(file) => setImage(file)}
-          />
-          <button type="submit" className="bg-[#0162EF] text-white px-4 py-2 rounded-md">
-            Enregistrer
-          </button>
-        </form>
-      </BottomSheetComponent>
+            <ImageInputParticle
+              label="Image de la sortie"
+              onChange={(file) => setImage(file)}
+            />
+            <button type="submit" className="bg-[#0162EF] text-white px-4 py-2 rounded-md">
+              Enregistrer
+            </button>
+          </form>
+        </BottomSheetComponent>
+      </ProtectedRoute>
     </>
   );
 }

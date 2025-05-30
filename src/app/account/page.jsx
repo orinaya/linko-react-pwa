@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineDeleteForever } from 'react-icons/md';
+import ProtectedRoute from '@/components/layout/ProtectedRoutes';
 
 const settingsSections = [
   {
@@ -106,29 +107,31 @@ export default function AccountPage() {
   const router = useRouter();
 
   return (
-    <div>
-      <div className="mb-6 text-xl font-semibold">
-        Paramètres du compte
-      </div>
-
-      {settingsSections.map((section) => (
-        <div key={section.title} className="mb-6">
-          <h2 className="text-sm text-gray-700 uppercase font-medium mb-2">{section.title}</h2>
-          <div className="bg-white rounded-xl divide-y border divide-gray-300 border-gray-300">
-            {section.items.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => router.push(item.href)}
-                className="w-full flex items-center px-4 py-4 text-left hover:bg-gray-50"
-              >
-                <div className="text-xl text-gray-600 mr-4">{item.icon}</div>
-                <div className="flex-1 text-gray-800">{item.label}</div>
-                <IoIosArrowForward className='text-gray-600' />
-              </button>
-            ))}
-          </div>
+    <ProtectedRoute>
+      <div>
+        <div className="mb-6 text-xl font-semibold">
+          Paramètres du compte
         </div>
-      ))}
-    </div>
+
+        {settingsSections.map((section) => (
+          <div key={section.title} className="mb-6">
+            <h2 className="text-sm text-gray-700 uppercase font-medium mb-2">{section.title}</h2>
+            <div className="bg-white rounded-xl divide-y border divide-gray-300 border-gray-300">
+              {section.items.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => router.push(item.href)}
+                  className="w-full flex items-center px-4 py-4 text-left hover:bg-gray-50"
+                >
+                  <div className="text-xl text-gray-600 mr-4">{item.icon}</div>
+                  <div className="flex-1 text-gray-800">{item.label}</div>
+                  <IoIosArrowForward className='text-gray-600' />
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </ProtectedRoute>
   );
 }

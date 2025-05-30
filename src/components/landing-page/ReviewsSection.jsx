@@ -79,7 +79,14 @@ function ReviewsSection() {
                 <div className="text-white">Disponibilité</div>
               </div>
             </div>
-            <ButtonParticle title="S'inscrire" colorBg="bg-[#FFFFFF] text-[#FF7401] border-solid border-[#FF7401] border-1" routeLink='/signup' iconBefore={FiUserPlus} className="w-fit" />
+            <ButtonParticle
+              title="S'inscrire"
+              variant="secondary"
+              color="orange"
+              routeLink="/signup"
+              className="w-fit"
+              iconBefore={FiUserPlus}
+            />
           </div>
         </div>
       </section>

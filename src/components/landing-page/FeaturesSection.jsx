@@ -14,7 +14,14 @@ function FeatureSection() {
               Ajoutez membres et accompagnateurs,
               créez vos groupes, depuis n’importe quelle plateforme
             </p>
-            <ButtonParticle title="Découvrir nos formules" colorBg="bg-[#FFFFFF] text-[#FF7401] border-solid border-[#FF7401] border-1" routeLink='#price' iconBefore={FiZap} className="w-fit" />
+            <ButtonParticle
+              title="Découvrir nos formules"
+              variant="secondary"
+              color="orange"
+              routeLink="#price"
+              className="w-fit"
+              iconBefore={FiZap}
+            />
           </div>
 
           <div className="flex flex-col gap-5">

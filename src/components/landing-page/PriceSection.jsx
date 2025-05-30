@@ -100,7 +100,14 @@ function PriceSection() {
                   <span className="text-gray-700">Alertes de présence et d'absence</span>
                 </li>
               </ul>
-              <ButtonParticle title="Commencer" colorBg="bg-[#FFE3CC] text-[#FF7401]" routeLink='/' iconBefore={FaAngleRight} className="w-fit" />
+              <ButtonParticle
+                title="Commencer"
+                variant="tertiary"
+                color="orange"
+                routeLink="#price"
+                className="w-fit"
+                iconBefore={FaAngleRight}
+              />
             </div>
 
 
@@ -139,7 +146,14 @@ function PriceSection() {
                   <span>Support prioritaire</span>
                 </li>
               </ul>
-              <ButtonParticle title="Choisir ce plan" colorBg="bg-[#FFFFFF] text-[#FF7401] border-1 border-solid border-[#FF7401]" routeLink='/' iconBefore={FaAngleRight} className="w-fit" />
+              <ButtonParticle
+                title="Choisir ce plan"
+                variant="primary"
+                color="orange"
+                routeLink="#price"
+                className="w-fit"
+                iconBefore={FaAngleRight}
+              />
             </div>
 
 
@@ -174,7 +188,14 @@ function PriceSection() {
                   <span className="text-gray-700">Bracelet offert la 1ère année</span>
                 </li>
               </ul>
-              <ButtonParticle title="Souscrire" colorBg="bg-[#FFE3CC] text-[#FF7401]" routeLink='/' iconBefore={FaAngleRight} className="w-fit" />
+              <ButtonParticle
+                title="Souscrire"
+                variant="tertiary"
+                color="orange"
+                routeLink="#price"
+                className="w-fit"
+                iconBefore={FaAngleRight}
+              />
             </div>
           </div>
 
