@@ -20,7 +20,6 @@ function Home() {
         <ReviewsSection />
         <PriceSection />
         <ContactFaqSection />
-        {/* en cours */}
         <FooterSection />
       </div>
     </>

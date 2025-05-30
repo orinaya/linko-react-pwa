@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { createContext, useContext, useEffect, useReducer } from 'react'
 import { supabaseGetUser, supabaseLogin, supabaseRegister } from '../services/auth/auth'
+import { supabase } from '../services/api'
 
 const AuthContext = createContext()
 
@@ -10,7 +11,8 @@ const initialState = {
   jwt: null,
   isLoggedIn: false,
   loading: false,
-  error: null
+  error: null,
+  hasCheckedAuth: false,
 }
 
 const actionTypes = {
@@ -39,6 +41,7 @@ const authReducer = (previousState, action) => {
         ...previousState,
         user: action.data,
         loading: false,
+        hasCheckedAuth: true,
         error: null
       }
     case actionTypes.LOADING:
@@ -49,10 +52,14 @@ const authReducer = (previousState, action) => {
     case actionTypes.ERROR:
       return {
         ...initialState,
+        hasCheckedAuth: true,
         error: action.error
       }
     case actionTypes.LOGOUT:
-      return initialState
+      return {
+        ...initialState,
+        hasCheckedAuth: true,
+      }
     default:
       throw new Error(`Unhandled action type : ${action.type}`)
   }
@@ -129,12 +136,36 @@ const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
   const router = useRouter()
   // Charge le state sauvegardé UNIQUEMENT côté client
+  // Charger depuis localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedState = JSON.parse(localStorage.getItem('@AUTH'))
       if (savedState) {
         dispatch({ type: actionTypes.LOAD_USER_DATA, data: savedState.user })
       }
+    }
+  }, [])
+  // Vérifier avec Supabase si l’utilisateur est connecté
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const { data, error } = await supabase.auth.getUser()
+        if (error || !data?.user) {
+          dispatch({ type: actionTypes.ERROR, error })
+          return
+        }
+
+        dispatch({
+          type: actionTypes.LOAD_USER_DATA,
+          data: data.user
+        })
+      } catch (err) {
+        dispatch({ type: actionTypes.ERROR, error: err })
+      }
+    }
+
+    if (!state.user) {
+      fetchUser()
     }
   }, [])
 
@@ -145,10 +176,20 @@ const AuthProvider = ({ children }) => {
     }
   }, [state])
 
+
   return (
-    <AuthContext.Provider value={{ state, ...authFactory(state, dispatch, router) }}>
+    // <AuthContext.Provider value={{ state, ...authFactory(state, dispatch, router) }}>
+    <AuthContext.Provider
+      value={{
+        user: state.user,
+        loading: state.loading,
+        isLoggedIn: state.isLoggedIn,
+        error: state.error,
+        ...authFactory(state, dispatch, router)
+      }}
+    >
       {children}
-    </AuthContext.Provider>
+    </AuthContext.Provider >
   )
 }
 

@@ -69,7 +69,7 @@ function Signup() {
         S'inscrire
       </button>
 
-      {state.error && <p className="text-red-600">{state.error}</p>}
+      {state?.error && <p className="text-red-600">{state?.error}</p>}
     </form>
   )
 }

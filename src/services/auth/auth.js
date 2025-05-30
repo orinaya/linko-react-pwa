@@ -18,8 +18,8 @@ export const supabaseRegister = async ({email, password, firstname, lastname}) =
     password,
     options: {
       data: {
-        // firstname,
-        // lastname,
+        firstname,
+        lastname,
         full_name: `${firstname} ${lastname}`,
       },
     },
