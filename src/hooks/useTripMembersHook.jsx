@@ -1,21 +1,21 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { getUsersByTripId } from "@/services/api";
+import { getMembersByTripId } from "@/services/api";
 
-function useTripUsersHook(tripId) {
-  const [users, setUsers] = useState([]);
+function useTripMembersHook(tripId) {
+  const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!tripId) return;
 
-    const fetchUsers = async () => {
+    const fetchMembers = async () => {
       setLoading(true);
       try {
-        const data = await getUsersByTripId(tripId);
-        setUsers(data || []);
+        const data = await getMembersByTripId(tripId);
+        setMembers(data || []);
       } catch (err) {
         console.error("Erreur lors du chargement des utilisateurs de la sortie :", err);
         setError(err);
@@ -24,10 +24,10 @@ function useTripUsersHook(tripId) {
       }
     };
 
-    fetchUsers();
+    fetchMembers();
   }, [tripId]);
 
-  return { users, loading, error };
+  return { members, loading, error };
 }
 
-export default useTripUsersHook;
+export default useTripMembersHook;

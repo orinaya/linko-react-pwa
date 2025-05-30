@@ -1,116 +1,115 @@
-import axios from 'axios'
-import { createClient } from '@supabase/supabase-js'
+import {createClient} from "@supabase/supabase-js";
 
+const supabaseUrl = `${process.env.NEXT_PUBLIC_SUPABASE_API_URL}`;
+const supabaseKey = `${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-const supabaseUrl = `${process.env.NEXT_PUBLIC_SUPABASE_API_URL}`
-const supabaseKey = `${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`
-const supabase = createClient(supabaseUrl, supabaseKey)
+async function getCurrentUser() {
+  const {data, error} = await supabase
+    .from("Users")
+    .select("*, auth:auth.users(email)")
+    .eq("id", userId);
+  if (error) {
+    console.error("Erreur lors de la récupération de l'utilisateur :", error);
+    return null;
+  }
+  return user;
+}
 
-async function getAllUsers() {
-  const { data, error } = await supabase
-    .from('User')
-    .select('*')
+async function getAllMembers() {
+  const {data, error} = await supabase.from("Member").select("*");
 
   if (error) {
-    console.error('Erreur lors de la récupération :', error)
-    return []
+    console.error("Erreur lors de la récupération :", error);
+    return [];
   }
 
-  return data
+  return data;
 }
 
 async function getAllGroups() {
-  const { data, error } = await supabase
-    .from('Group')
-    .select('*')
+  const {data, error} = await supabase.from("Group").select("*");
 
   if (error) {
-    console.error('Erreur lors de la récupération :', error)
-    return []
+    console.error("Erreur lors de la récupération :", error);
+    return [];
   }
 
-  return data
+  return data;
 }
 
 async function getAllTrips() {
-  const { data, error } = await supabase
-    .from('Trip')
-    .select('*')
+  const {data, error} = await supabase.from("Trip").select("*");
 
   if (error) {
-    console.error('Erreur lors de la récupération :', error)
-    return []
+    console.error("Erreur lors de la récupération :", error);
+    return [];
   }
 
-  return data
+  return data;
 }
 
 async function getTripGroups() {
-  const { data, error } = await supabase
-    .from('Trip_Group')
-    .select('*');
+  const {data, error} = await supabase.from("Trip_Group").select("*");
 
   if (error) {
-    console.error('Erreur lors de la récupération des Trip_Group :', error);
+    console.error("Erreur lors de la récupération des Trip_Group :", error);
     return [];
   }
   return data;
 }
 
-async function getUsersByTripId(tripId) {
-
+async function getMembersByTripId(tripId) {
   // get all group with trip_id
-  const { data: tripGroups, error: tripGroupsError } = await supabase
-    .from('Trip_Group')
-    .select('group_id')
-    .eq('trip_id', tripId);
+  const {data: tripGroups, error: tripGroupsError} = await supabase
+    .from("Trip_Group")
+    .select("group_id")
+    .eq("trip_id", tripId);
 
   if (tripGroupsError) {
-    console.error('Erreur lors de la récupération des Trip_Group :', tripGroupsError);
+    console.error("Erreur lors de la récupération des Trip_Group :", tripGroupsError);
     return [];
   }
 
-  const groupIds = tripGroups.map(tg => tg.group_id);
+  const groupIds = tripGroups.map((tg) => tg.group_id);
 
   if (groupIds.length === 0) return [];
 
-  // get all user_id from Group_User 
-  const { data: groupUsers, error: groupUsersError } = await supabase
-    .from('Group_User')
-    .select('user_id')
-    .in('group_id', groupIds);
+  // get all member_id from Group_Member
+  const {data: groupMembers, error: groupMembersError} = await supabase
+    .from("Group_Member")
+    .select("member_id")
+    .in("group_id", groupIds);
 
-  if (groupUsersError) {
-    console.error('Erreur lors de la récupération des Group_User :', groupUsersError);
+  if (groupMembersError) {
+    console.error("Erreur lors de la récupération des Group_Member :", groupMembersError);
     return [];
   }
 
-  const userIds = groupUsers.map(gu => gu.user_id);
+  const membersIds = groupMembers.map((gu) => gu.members_id);
 
-  if (userIds.length === 0) return [];
+  if (membersIds.length === 0) return [];
 
-  // get all users 
-  const { data: users, error: usersError } = await supabase
-    .from('User')
-    .select('*')
-    .in('id', userIds);
+  // get all members
+  const {data: members, error: membersError} = await supabase
+    .from("Member")
+    .select("*")
+    .in("id", memberIds);
 
-  if (usersError) {
-    console.error('Erreur lors de la récupération des utilisateurs :', usersError);
+  if (membersError) {
+    console.error("Erreur lors de la récupération des utilisateurs :", membersError);
     return [];
   }
 
-  return users;
+  return members;
 }
 
-
-
 export {
-  getAllUsers,
+  supabase,
+  getCurrentUser,
+  getAllMembers,
   getAllGroups,
   getAllTrips,
   getTripGroups,
-  getUsersByTripId 
-}
-
-
+  getMembersByTripId,
+};
