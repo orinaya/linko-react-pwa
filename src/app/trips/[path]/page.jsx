@@ -47,45 +47,45 @@ function TripDetails() {
 
 
   return (
-    <ProtectedRoute>
+    // <ProtectedRoute>
+    <div className="flex flex-col items-center">
       <div className="flex flex-col items-center">
-        <div className="flex flex-col items-center">
-          {trip.image ? (
-            <div className="mb-4">
-              <img
-                src={trip.image}
-                alt={trip.title}
-                className="w-full h-64 object-cover rounded-lg"
-              />
-            </div>
-          ) : (
-            <div className="w-20 h-20 rounded-full bg-green-200 flex items-center justify-center">
-              <span className="text-green-700 font-bold text-2xl">AA</span>
-            </div>
-          )}
-          <h1 className="text-xl font-bold mt-2.5">{trip.title}</h1>
-
-        </div>
-        <div className="mt-6 w-full max-w-2xl p-4 bg-white rounded-xl gap-3 flex flex-col">
-          <div className="flex gap-3 justify-between">
-            <div className="flex flex-col gap-2 bg-[#EBF3FF] p-4 rounded-lg items-center justify-center w-full">
-              <span className="text-[#0162EF] font-regular text-sm">Date de départ</span>
-              <span>{formatDate(trip.start_date)}</span>
-            </div>
-            <div className="flex flex-col gap-2 bg-[#EBF3FF] p-4 rounded-lg items-center justify-center w-full">
-              <span className="text-[#0162EF] font-regular text-sm">Date de départ</span>
-              <span>{formatDate(trip.start_date)}</span>
-            </div>
+        {trip.image ? (
+          <div className="mb-4">
+            <img
+              src={trip.image}
+              alt={trip.title}
+              className="w-full h-64 object-cover rounded-lg"
+            />
           </div>
-          <div className="flex justify-between bg-[#EBF3FF] p-4 rounded-lg items-center">
-            <span className="text-[#0162EF] font-regular text-sm">Effectif à prévoir</span>
-            <span>{effectif}</span>
+        ) : (
+          <div className="w-20 h-20 rounded-full bg-green-200 flex items-center justify-center">
+            <span className="text-green-700 font-bold text-2xl">AA</span>
           </div>
-        </div>
-
+        )}
+        <h1 className="text-xl font-bold mt-2.5">{trip.title}</h1>
 
       </div>
-    </ProtectedRoute>
+      <div className="mt-6 w-full max-w-2xl p-4 bg-white rounded-xl gap-3 flex flex-col">
+        <div className="flex gap-3 justify-between">
+          <div className="flex flex-col gap-2 bg-[#EBF3FF] p-4 rounded-lg items-center justify-center w-full">
+            <span className="text-[#0162EF] font-regular text-sm">Date de départ</span>
+            <span>{formatDate(trip.start_date)}</span>
+          </div>
+          <div className="flex flex-col gap-2 bg-[#EBF3FF] p-4 rounded-lg items-center justify-center w-full">
+            <span className="text-[#0162EF] font-regular text-sm">Date de départ</span>
+            <span>{formatDate(trip.start_date)}</span>
+          </div>
+        </div>
+        <div className="flex justify-between bg-[#EBF3FF] p-4 rounded-lg items-center">
+          <span className="text-[#0162EF] font-regular text-sm">Effectif à prévoir</span>
+          <span>{effectif}</span>
+        </div>
+      </div>
+
+
+    </div>
+    // </ProtectedRoute>
   );
 }
 

@@ -3,10 +3,10 @@ import LogoutButton from "@/components/Logout";
 
 function Alert() {
   return (<>
-    <ProtectedRoute>
-      <h1>Alerte</h1>
-      <LogoutButton />
-    </ProtectedRoute>
+    {/* <ProtectedRoute> */}
+    <h1>Alerte</h1>
+    <LogoutButton />
+    {/* </ProtectedRoute> */}
   </>);
 }
 

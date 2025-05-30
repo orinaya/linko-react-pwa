@@ -4,6 +4,7 @@ import BottomTabs from "@/components/layout/BottomTabs";
 import HeaderComponent from "@/components/layout/HeaderComponent";
 import LayoutProviders from "@/components/layout/LayoutProviders";
 import {AuthProvider} from "@/contexts/AuthContext";
+import {ProfileProvider} from "@/contexts/ProfileContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +30,11 @@ export default function RootLayout({children}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-          <LayoutProviders>
-            <HeaderComponent />
-            {children}
-            <BottomTabs />
-          </LayoutProviders>
-        </AuthProvider>
+        <LayoutProviders>
+          <HeaderComponent />
+          {children}
+          <BottomTabs />
+        </LayoutProviders>
       </body>
     </html>
   );

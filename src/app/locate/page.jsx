@@ -34,10 +34,10 @@ const Map = () => {
 
 export default function Locate() {
   return (
-    <ProtectedRoute>
-      <div className="w-full h-screen">
-        <Map></Map>
-      </div>
-    </ProtectedRoute>
+    // <ProtectedRoute>
+    <div className="w-full h-screen">
+      <Map></Map>
+    </div>
+    // </ProtectedRoute>
   );
 }

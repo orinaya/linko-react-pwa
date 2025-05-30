@@ -14,8 +14,16 @@ export default function ProtectedRoute({ children }) {
     }
   }, [state?.user, state?.hasCheckedAuth, router])
 
-  if (!state?.hasCheckedAuth) {
+  if (!state?.hasCheckedAuth || state?.loading) {
     return <p>Chargement...</p>
+  }
+
+  if (!state?.user) {
+    return <p>Vous devez être connecté pour accéder à cette page.</p>
+  }
+
+  if (state?.error) {
+    return <p className="text-red-600">Erreur : {state.error.message}</p>
   }
 
   return <>{children}</>

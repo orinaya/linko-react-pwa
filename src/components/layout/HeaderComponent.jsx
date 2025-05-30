@@ -1,77 +1,81 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { useProfiles } from '@/contexts/ProfileContext';
+import { useState } from 'react';
 import ButtonParticle from '../particles/ButtonParticle';
+import ProfileSelectParticle from '../particles/ProfileSelectParticle';
+import DropdownProfileParticle from '../particles/DropdownProfileParticle';
 import { IoIosArrowBack } from 'react-icons/io';
 
 function HeaderComponent() {
   const pathname = usePathname();
   const router = useRouter();
+  const { user } = useAuth();
+  const { profiles } = useProfiles();
+
+  const [currentProfile, setCurrentProfile] = useState(profiles?.[0] || null);
+
+  const firstname = user?.user_metadata?.firstname || 'utilisateur';
+  const lastname = user?.user_metadata?.lastname || 'utilisateur';
+  const initials = firstname[0]?.toUpperCase() + lastname[0]?.toUpperCase();
 
   const pathSegments = pathname.split('/').filter(Boolean);
   const isDynamicPage = pathSegments.length > 1;
 
-  let title;
-  switch (pathname) {
-    case '/home':
-      title = 'Bonjour Jean,';
-      break;
-    case '/alerts':
-      title = 'Les alertes';
-      break;
-    case '/trips':
-      title = 'Les sorties';
-      break;
-    case '/groups':
-      title = 'Gestion des groupes';
-      break;
-    default:
-      title = 'Titre';
-  }
+  const showHeader = pathname !== '/';
+  const hideLogo = ['/', '/locate', '/account'].includes(pathname);
+  const showBackButton = isDynamicPage || pathname === '/account';
+  const showProfileDropdown = pathname !== '/';
+  const showTitleAndProfile = pathname === '/home';
 
-  const hiddenHeaderRoutes = ['/', '/account', '/locate'];
+  const pageTitles = {
+    '/home': `Bonjour ${firstname},`,
+    '/alerts': 'Les alertes',
+    '/trips': 'Les sorties',
+    '/groups': 'Gestion des groupes',
+  };
 
-  const shouldShowHeader = !hiddenHeaderRoutes.includes(pathname);
+  const title = pageTitles[pathname] || 'Titre';
+
+  if (!showHeader) return null;
 
   return (
-    <>
-      {shouldShowHeader && (
-        <>
-          {pathname !== '/account' && (
-            <div className="flex items-center justify-center">
-              <img
-                src="/assets/images/linko-orange.svg"
-                alt="Linko Logo"
-                className="w-18 h-auto object-contain"
-              />
-            </div>
-          )}
-          <div className="flex items-center justify-between py-3.5 bg-transparent">
-
-            {isDynamicPage || pathname == '/account' ? (
-              <ButtonParticle
-                title="Rettour"
-                variant="ghost"
-                color="blue"
-                onClick={() => router.back()}
-                className="w-fit"
-                iconBefore={IoIosArrowBack}
-              />
-            ) : (
-              <div className="text-xl font-bold">{title}</div>
-            )}
-
-            {pathname !== '/account' && (
-              <div onClick={() => router.push('/account')} className="cursor-pointer">
-                <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
-                  <span className="text-green-700 font-bold">JB</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </>
+    <header className="w-full">
+      {!hideLogo && (
+        <div className="flex items-center justify-center">
+          <img
+            src="/assets/images/linko-orange.svg"
+            alt="Linko Logo"
+            className="w-18 h-auto object-contain"
+          />
+        </div>
       )}
-    </>
+      <div className="flex items-center justify-between py-3.5 bg-transparent">
+        {showBackButton ? (
+          <ButtonParticle
+            title="Retour"
+            variant="ghost"
+            color="blue"
+            onClick={() => router.back()}
+            className="w-fit"
+            iconBefore={IoIosArrowBack}
+          />
+        ) : showTitleAndProfile ? (
+          <div className="flex flex-col items-start justify-center">
+            <div className="text-xl font-bold">{title}</div>
+            <p>Profil sélectionné</p>
+            <ProfileSelectParticle profiles={profiles} onChange={setCurrentProfile} />
+          </div>
+        ) : (
+          <div />
+        )}
+        {showProfileDropdown && (
+          <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} />
+        )}
+      </div>
+    </header>
   );
 }
 

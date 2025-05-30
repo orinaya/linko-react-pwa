@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { createContext, useContext, useEffect, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { supabaseGetUser, supabaseLogin, supabaseRegister } from '../services/auth/auth'
 import { supabase } from '../services/api'
 
@@ -94,7 +94,6 @@ const authFactory = (previousState, dispatch, router) => ({
           type: actionTypes.REGISTER_SUCCESS,
           data: registerData
         })
-        router.push('/locate')
       }
     } catch (error) {
       handleError(dispatch, error)
@@ -116,11 +115,19 @@ const authFactory = (previousState, dispatch, router) => ({
       handleError(error)
     }
   },
-  logout: () => {
+  logout: async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion Supabase:', error);
+    }
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('@AUTH');
+    }
     dispatch({
       type: actionTypes.LOGOUT
-    })
-    router.push('/')
+    });
+    router.push('/');
   }
 })
 
@@ -134,18 +141,28 @@ const handleError = (dispatch, error) => {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
+  const [isInitialized, setIsInitialized] = useState(false)
   const router = useRouter()
+
   // Charge le state sauvegardé UNIQUEMENT côté client
-  // Charger depuis localStorage
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedState = JSON.parse(localStorage.getItem('@AUTH'))
-      if (savedState) {
-        dispatch({ type: actionTypes.LOAD_USER_DATA, data: savedState.user })
+    if (typeof window === 'undefined') return
+
+    const saved = localStorage.getItem('@AUTH')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        if (parsed?.user) {
+          dispatch({ type: actionTypes.LOAD_USER_DATA, data: parsed.user })
+        }
+      } catch (e) {
+        console.error('Erreur de parsing localStorage @AUTH', e)
       }
     }
+    setIsInitialized(true)
   }, [])
-  // Vérifier avec Supabase si l’utilisateur est connecté
+
+  // Fetch depuis supabase si non trouvé dans localStorage
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -164,21 +181,48 @@ const AuthProvider = ({ children }) => {
       }
     }
 
-    if (!state.user) {
+    if (isInitialized && !state.user) {
       fetchUser()
     }
-  }, [])
+  }, [isInitialized, state.user])
 
-  // Sauvegarde dans localStorage à chaque changement
+  // Sauvegarde dans localStorage à chaque mise à jour du user
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('@AUTH', JSON.stringify(state))
+    if (typeof window !== 'undefined' && state.user) {
+      localStorage.setItem('@AUTH', JSON.stringify({ user: state.user }))
     }
-  }, [state])
+  }, [state.user])
 
+  // Vérifie si l'utilisateur a un profil associé
+  useEffect(() => {
+    const checkUserProfiles = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('User_Profile')
+          .select('profile_id')
+          .eq('user_id', state.user.id)
+
+        if (error) {
+          console.error("Erreur lors de la vérification des profils :", error)
+          return
+        }
+
+        if (!data || data.length === 0) {
+          router.push('/create-profile')
+        } else {
+          router.push('/locate')
+        }
+      } catch (err) {
+        console.error('Erreur lors du check des profils :', err)
+      }
+    }
+
+    if (state.user && state.hasCheckedAuth) {
+      checkUserProfiles()
+    }
+  }, [state.user, state.hasCheckedAuth])
 
   return (
-    // <AuthContext.Provider value={{ state, ...authFactory(state, dispatch, router) }}>
     <AuthContext.Provider
       value={{
         user: state.user,
