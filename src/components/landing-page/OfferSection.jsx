@@ -3,13 +3,13 @@ import { FiWifi } from "react-icons/fi";
 function OfferSection() {
   return (
     <>
-      <section className="py-20" id="offer">
+      <section className="py-10 sm:py-20" id="offer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-32">
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
               Notre offre en
               <br />
-              <span className="text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4">3 étapes</span>
+              <span className="text-4xl sm:text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4">3 étapes</span>
             </h2>
           </div>
 
@@ -29,7 +29,7 @@ function OfferSection() {
               </div>
             </div>
 
-            <div className="relative bg-gradient-to-b from-[#eff5fe] to-[#f0f6ff]/0 rounded-xl p-8">
+            <div className="min-h-[750px] sm:min-h-auto relative bg-gradient-to-b from-[#eff5fe] to-[#f0f6ff]/0 rounded-xl p-8">
               <span className="absolute font-semibold mb-4 font-grenadine leading-0 text-[200px] top-0 left-[-20px] text-[#0162ef]/10">2</span>
               <h3 className="text-xl font-semibold mb-4 font-grenadine">Équipez-les de bracelets connectés</h3>
               <p className="text-gray-600 text-start font-light">
@@ -39,7 +39,7 @@ function OfferSection() {
                 <img
                   src="/assets/images/mockup-phone-location.png"
                   alt="Linko mockup bluetooth page"
-                  className="w-38 object-contain absolute bottom-14 h-full"
+                  className="w-38 object-contain absolute -bottom-6 sm:bottom-14 h-full"
                 />
                 <FiWifi className="w-16 h-16 text-[#747474] rotate-[-135deg] top-31 absolute right-28" />
                 <img

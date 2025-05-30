@@ -5,16 +5,16 @@ import ButtonParticle from "../particles/ButtonParticle";
 function PriceSection() {
   return (
     <>
-      <section className="py-20" id="price">
+      <section className="py-10 sm:py-20" id="price">
         <div className="flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-16">
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
               Nos
               <br />
-              <span className="text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4">tarifs</span>
+              <span className="text-4xl sm:text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4">tarifs</span>
             </h2>
           </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="md:col-span-2 bg-white rounded-2xl border-2 border-solid border-[#F4F1EE] p-12 flex flex-col md:flex-row items-center gap-8">
               <img
                 src="/assets/images/fake-watch.png"
@@ -111,7 +111,7 @@ function PriceSection() {
             </div>
 
 
-            <div className="bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+            <div className="bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden pt-14 sm:pt-auto">
               <div className="flex gap-2 justify-center items-center absolute top-4 right-4 bg-white border-1 border-solid border-[#FF7401] text-[#FF7401] px-3 py-1 rounded-full text-sm font-semibold">
                 <FaHeart />
                 Populaire

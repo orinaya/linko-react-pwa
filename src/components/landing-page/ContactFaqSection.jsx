@@ -59,13 +59,13 @@ function ContactFaqSection() {
   };
 
   return (<>
-    <section className="py-20" id="contact-faq">
+    <section className="py-10 sm:py-20" id="contact-faq">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24">
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
             Vous avez une
             <br />
-            <span className="text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4"> question ?</span>
+            <span className="text-4xl sm:text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4"> question ?</span>
           </h2>
         </div>
 

@@ -34,7 +34,6 @@ function CreateProfile() {
       return
     }
 
-    // Redirige ensuite vers la page d’accueil
     router.push('/locate')
   }
 

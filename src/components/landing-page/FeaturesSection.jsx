@@ -3,12 +3,12 @@ import ButtonParticle from "../particles/ButtonParticle";
 
 function FeatureSection() {
   return (
-    <section className="py-20 relative overflow-hidden" id="features">
+    <section className="py-10 sm:py-20 relative overflow-hidden" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center gap-6 flex-col sm:flex-row">
+        <div className="flex justify-between items-auto sm:items-center gap-6 flex-col lg:flex-row">
           <div className="bg-[#0057FF] text-white px-8 py-20 rounded-xl">
-            <h2 className="font-grenadine text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">
-              Nos fonctionnalités <span className="bg-[#4E96FF] text-white px-1 rounded text-4xl">principales</span>
+            <h2 className="font-grenadine text-2xl sm:text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">
+              Nos fonctionnalités <span className="bg-[#4E96FF] text-white px-1 rounded text-3xl sm:text-4xl">principales</span>
             </h2>
             <p className="text-white/90 font-light mb-8 max-w-[280px]">
               Ajoutez membres et accompagnateurs,
@@ -25,7 +25,7 @@ function FeatureSection() {
           </div>
 
           <div className="flex flex-col gap-5">
-            <div className="flex gap-5">
+            <div className="flex flex-col sm:flex-row gap-5">
               <FeatureCard
                 icon={
                   <img
@@ -58,7 +58,7 @@ function FeatureSection() {
                 desc="Localisez et gérez la situation en un clin d’œil"
               />
             </div>
-            <div className="flex gap-5 -ml-[70px]">
+            <div className="flex flex-col sm:flex-row gap-5 lg:-ml-[70px]">
               <FeatureCard
                 icon={
                   <img
@@ -99,7 +99,7 @@ function FeatureSection() {
 
 function FeatureCard({ icon, title, desc }) {
   return (
-    <div className="bg-white rounded-xl p-4 transition w-[255px] border-2 border-[#F1ECE9] border-solid">
+    <div className="bg-white rounded-xl p-4 transition w-full sm:w-[255px] border-2 border-[#F1ECE9] border-solid">
       <div className="w-10 h-10 flex items-center justify-center mb-4">
         {icon}
       </div>

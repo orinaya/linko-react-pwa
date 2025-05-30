@@ -4,8 +4,8 @@ import ButtonParticle from "../particles/ButtonParticle";
 function ReviewsSection() {
   return (
     <>
-      <section className="py-20" id="reviews">
-        <div className="flex justify-center gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-20" id="reviews">
+        <div className="flex flex-col-reverse lg:flex-row justify-center gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center items-center gap-4">
             <div className="flex flex-col gap-8 text-center">
               <div className="max-w-[480px] bg-[#F6F6F6] border-2 border-solid border-[#F1ECE9] p-6 rounded-xl flex gap-4 items-center justify-center">
@@ -58,14 +58,14 @@ function ReviewsSection() {
 
           </div>
           <div className="bg-[#0057FF] text-white px-8 py-20 rounded-xl">
-            <h2 className="font-grenadine text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">
+            <h2 className="font-grenadine text-2xl sm:text-3xl  font-bold mb-6 leading-[1.8] min-w-[316px]">
               Ils nous font
-              <span className="ml-2 bg-[#4E96FF] text-white px-1 rounded text-4xl">confiance</span>
+              <span className="ml-2 bg-[#4E96FF] text-white px-1 rounded text-3xl sm:text-4xl">confiance</span>
             </h2>
             <p className="text-white font-light mb-8 max-w-[480px]">
               Car votre confiance est synonyme de notre succès, nous nous engageons à vous offrir une expérience de qualité supérieure
             </p>
-            <div className="flex gap-8 text-center mb-6">
+            <div className="flex flex-col sm:flex-row gap-8 text-center mb-6">
               <div className="bg-[#4E96FF] px-8 py-6 rounded-xl">
                 <div className="text-3xl font-bold text-white">50K+</div>
                 <div className="text-white">Utilisateurs actifs</div>

@@ -72,7 +72,9 @@ function HeaderComponent() {
           <div />
         )}
         {showProfileDropdown && (
-          <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} />
+          <div className='absolute right-8 top-8'>
+            <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} />
+          </div>
         )}
       </div>
     </header>

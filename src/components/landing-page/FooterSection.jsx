@@ -16,7 +16,7 @@ function FooterSection() {
               className="w-70 h-auto object-contain"
             />
           </div>
-          <div className="flex gap-8 justify-around flex-wrap md:flex-nowrap text-center md:text-left px-8">
+          <div className="flex gap-8 justify-around flex-wrap lg:flex-nowrap text-center md:text-left sm:px-8">
             <div className="bg-[#0057FF] text-white">
               <h2 className="font-grenadine text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">
                 Testez dès maintenant
@@ -25,13 +25,13 @@ function FooterSection() {
                   notre solution
                 </span>
               </h2>
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex sm:flex-col md:flex-row gap-4 w-full md:w-fit lg:w-full">
                 <ButtonParticle
                   title="S'inscrire"
                   variant="primary"
                   color="orange"
                   routeLink="/signup"
-                  className="w-fit"
+                  className="w-full lg:w-full md:w-fit"
                   iconBefore={FiUserPlus}
                 />
                 <ButtonParticle
@@ -39,7 +39,7 @@ function FooterSection() {
                   variant="secondary"
                   color="orange"
                   routeLink="/login"
-                  className="w-fit"
+                  className="w-full lg:w-full md:w-fit"
                   iconBefore={FiUser}
                 />
               </div>
