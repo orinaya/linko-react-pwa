@@ -62,7 +62,21 @@ async function getMembersByProfileId(profileId) {
     .eq("profile_id", profileId);
 
   if (error) throw error;
-  const members = data?.map((pm) => pm.Member) ?? [];
+
+  const members =
+    data?.map((pm) => {
+      const member = pm.Member;
+      const avatarPath = member.avatar || "penguin.png";
+
+      const cleanPath = avatarPath.startsWith("/") ? avatarPath.slice(1) : avatarPath;
+
+      const {data: urlData} = supabase.storage.from("avatar").getPublicUrl(cleanPath);
+      const publicUrl = urlData?.publicUrl;
+      return {
+        ...member,
+        avatarUrl: publicUrl,
+      };
+    }) ?? [];
 
   return members;
 }
