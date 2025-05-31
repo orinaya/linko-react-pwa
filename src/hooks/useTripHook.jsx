@@ -1,7 +1,7 @@
 'use client'
 
+import { getAllTrips } from "@/services/user-datas/trip"
 import { useEffect, useState } from "react"
-import { getAllTrips } from "@/services/api"
 
 export default function useTripHook() {
   const [trips, setTrips] = useState([])

@@ -1,9 +1,7 @@
 'use client'
 
 import ButtonParticle from "@/components/particles/ButtonParticle";
-import { useState } from 'react';
-import { useGroups } from "@/contexts/GroupContext";
-import useTripHook from "@/hooks/useTripHook";
+import { useEffect, useState } from 'react';
 import { IoFootstepsOutline } from "react-icons/io5";
 import ImageInputParticle from '@/components/particles/ImageInputParticle';
 import MultiselectParticle from '@/components/particles/MultiselectParticle';
@@ -12,9 +10,14 @@ import SectionComponent from "@/components/SectionComponent";
 import BottomSheetComponent from '@/components/BottomSheetComponent';
 import { formatDate, getTodayDateString } from "@/utils/date";
 import ProtectedRoute from "@/components/layout/ProtectedRoutes";
+import useGroupsByProfileHook from "@/hooks/useGroupsByProfileHook";
+import { useProfiles } from "@/contexts/ProfileContext";
+import useTripsByProfileHook from "@/hooks/useTripsByProfileHook";
 
 function Trips() {
-  const { trips, setTrips } = useTripHook()
+  const { currentProfile } = useProfiles();
+  const profileId = currentProfile?.id;
+  const { trips, loading, error, setLoading, setTrips } = useTripsByProfileHook(profileId);
 
   // filter trips by state
   // 'en cours', 'à venir', 'terminée'
@@ -23,8 +26,7 @@ function Trips() {
   const pastTrips = trips?.filter(trip => trip.state === 'terminée') || []
 
   // group context
-  const { groups } = useGroups();
-
+  const { groups } = useGroupsByProfileHook()
   // State for the bottom sheet
   const [open, setOpen] = useState(false);
   // State for the form inputs
@@ -33,6 +35,13 @@ function Trips() {
   const [endDate, setEndDate] = useState(getTodayDateString());
   const [selectedGroups, setSelectedGroups] = useState([]);
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (!profileId) {
+      setTrips([]);
+      setLoading(false);
+    }
+  }, [profileId, setTrips, setLoading]);
 
 
   return (
@@ -80,8 +89,6 @@ function Trips() {
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
-
-
           <MultiselectParticle
             label="Groupe(s)"
             options={groups}

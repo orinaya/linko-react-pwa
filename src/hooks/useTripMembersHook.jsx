@@ -1,7 +1,7 @@
 'use client'
 
+import { getMembersByTripId } from "@/services/user-datas/trip";
 import { useEffect, useState } from "react";
-import { getMembersByTripId } from "@/services/api";
 
 function useTripMembersHook(tripId) {
   const [members, setMembers] = useState([]);

@@ -53,7 +53,7 @@ function ContactFaqSection() {
       alert('Veuillez remplir tous les champs');
       return;
     }
-    console.log('Form submitted:', formData);
+    // console.log('Form submitted:', formData);
     alert('Message envoyé !');
     setFormData({ name: '', email: '', message: '' });
   };

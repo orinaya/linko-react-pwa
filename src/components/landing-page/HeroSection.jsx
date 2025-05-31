@@ -17,7 +17,7 @@ function HeroSection() {
               <p className="text-[#1a0c00] text-base sm:text-xl font-medium">
                 Une plateforme pensée pour les enseignants, animateurs et responsables de groupes d’enfants.
               </p>
-              <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-fit md:w-full">
+              <div className="flex flex-col md:flex-col lg:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-fit md:w-full">
                 <ButtonParticle
                   title="Essayer gratuitement"
                   variant="primary"

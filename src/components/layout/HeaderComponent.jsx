@@ -13,9 +13,7 @@ function HeaderComponent() {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuth();
-  const { profiles } = useProfiles();
-
-  const [currentProfile, setCurrentProfile] = useState(profiles?.[0] || null);
+  const { profiles, currentProfile, setCurrentProfile } = useProfiles();
 
   const firstname = user?.user_metadata?.firstname || 'utilisateur';
   const lastname = user?.user_metadata?.lastname || 'utilisateur';
@@ -66,13 +64,27 @@ function HeaderComponent() {
           <div className="flex flex-col items-start justify-center">
             <div className="text-xl font-bold">{title}</div>
             <p>Profil sélectionné</p>
-            <ProfileSelectParticle profiles={profiles} onChange={setCurrentProfile} />
+            {/* <ProfileSelectParticle
+              profiles={profiles}
+              selected={currentProfile}
+              onChange={(profile) => {
+                setCurrentProfile(profile);
+              }}
+            /> */}
+
+            <ProfileSelectParticle
+              profiles={profiles}
+              selectedProfileId={currentProfile?.id}
+              onChange={(profile) =>
+                setCurrentProfile(profile)
+              }
+            />
           </div>
         ) : (
           <div />
         )}
         {showProfileDropdown && (
-          <div className='absolute right-8 top-8'>
+          <div className='absolute right-4 top-8'>
             <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} />
           </div>
         )}
