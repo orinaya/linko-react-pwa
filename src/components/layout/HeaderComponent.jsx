@@ -29,7 +29,7 @@ function HeaderComponent() {
   const showTitleAndProfile = pathname === '/home';
 
   const pageTitles = {
-    '/home': `Bonjour ${firstname},`,
+    '/home': `Bienvenue, ${firstname}`,
     '/alerts': 'Les alertes',
     '/trips': 'Les sorties',
     '/groups': 'Gestion des groupes',
@@ -62,16 +62,9 @@ function HeaderComponent() {
           />
         ) : showTitleAndProfile ? (
           <div className="flex flex-col items-start justify-center">
-            <div className="text-xl font-bold">{title}</div>
+            <div className={`${pathname === '/home' ? 'text-2xl' : 'text-xl'} font-bold`}>
+              {title}</div>
             <p>Profil sélectionné</p>
-            {/* <ProfileSelectParticle
-              profiles={profiles}
-              selected={currentProfile}
-              onChange={(profile) => {
-                setCurrentProfile(profile);
-              }}
-            /> */}
-
             <ProfileSelectParticle
               profiles={profiles}
               selectedProfileId={currentProfile?.id}
