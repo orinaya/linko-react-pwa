@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { slugify } from "@/utils/slugify";
+import { LuImage } from "react-icons/lu";
 
 function CardComponent({
   id,
@@ -32,11 +33,11 @@ function CardComponent({
   };
 
   return (
-    <li className="flex gap-4 bg-white p-4 rounded-lg relative" onClick={handleClick}>
+    <li className="flex gap-4 bg-white px-4 py-2 rounded-xl relative items-center" onClick={handleClick}>
       <div className="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center">
-        <span className="text-green-700 font-bold">{initials}</span>
+        <LuImage className="text-green-700 w-2/5 h-2/5" />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-3/5">
         <p className="font-bold">{title}</p>
         <div className="flex text-sm gap-1 text-gray-500 flex-wrap">
           <p>{startDate}</p>

@@ -4,10 +4,7 @@ function SectionComponent({ title, datas = [], formatDate }) {
   return (
     <div className="my-6">
       <div className="flex items-center gap-2 py-3.5 bg-transparent">
-        <h2 className="font-semibold">{title}</h2>
-        <span className="bg-[#d6efff] text-[#077cff] py-1 px-3 rounded-md text-sm font-medium">
-          {datas.length}
-        </span>
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">{title}<span className="font-semibold text-sm bg-[#FFE3CC] text-[#FF7401] px-2.5 py-1 rounded-md">{datas.length}</span></h2>
       </div>
 
       {datas.length > 0 ? (

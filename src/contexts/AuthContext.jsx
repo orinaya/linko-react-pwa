@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { supabaseGetUser, supabaseLogin, supabaseRegister } from '../services/auth/auth'
 import { supabase } from '../services/api'
@@ -24,7 +24,6 @@ const actionTypes = {
   LOGOUT: 'LOGOUT'
 }
 
-// previousState = état précédent
 const authReducer = (previousState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_SUCCESS:
@@ -112,21 +111,21 @@ const authFactory = (previousState, dispatch, router) => ({
         })
       }
     } catch (error) {
-      handleError(error)
+      handleError(dispatch, error)
     }
   },
   logout: async () => {
     try {
-      await supabase.auth.signOut();
+      await supabase.auth.signOut()
     } catch (error) {
-      console.error('Erreur lors de la déconnexion Supabase:', error);
+      console.error('Erreur lors de la déconnexion Supabase:', error)
     }
     if (typeof window !== 'undefined') {
-      localStorage.removeItem('@AUTH');
+      localStorage.removeItem('@AUTH')
     }
     dispatch({
       type: actionTypes.LOGOUT
-    });
+    })
     router.push('/');
   }
 })
@@ -143,8 +142,9 @@ const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
   const [isInitialized, setIsInitialized] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
 
-  // Charge le state sauvegardé UNIQUEMENT côté client
+  // Charge l'état depuis localStorage côté client
   useEffect(() => {
     if (typeof window === 'undefined') return
 
@@ -207,9 +207,11 @@ const AuthProvider = ({ children }) => {
           return
         }
 
-        if (!data || data.length === 0) {
+        const hasProfile = data && data.length > 0
+
+        if (!hasProfile && pathname !== '/create-profile') {
           router.push('/create-profile')
-        } else {
+        } else if (hasProfile && (pathname === '/' || pathname === '/create-profile')) {
           router.push('/locate')
         }
       } catch (err) {
@@ -220,7 +222,7 @@ const AuthProvider = ({ children }) => {
     if (state.user && state.hasCheckedAuth) {
       checkUserProfiles()
     }
-  }, [state.user, state.hasCheckedAuth])
+  }, [state.user, state.hasCheckedAuth, pathname])
 
   return (
     <AuthContext.Provider

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 function useTripMembersHook(tripId) {
   const [members, setMembers] = useState([]);
+  const [groupIds, setGroupIds] = useState([]);
+  const [groupNames, setGroupNames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,8 +16,10 @@ function useTripMembersHook(tripId) {
     const fetchMembers = async () => {
       setLoading(true);
       try {
-        const data = await getMembersByTripId(tripId);
-        setMembers(data || []);
+        const { members, groupNames, groupIds } = await getMembersByTripId(tripId);
+        setMembers(members || []);
+        setGroupNames(groupNames || []);
+        setGroupIds(groupIds || []);
       } catch (err) {
         console.error("Erreur lors du chargement des utilisateurs de la sortie :", err);
         setError(err);
@@ -27,7 +31,7 @@ function useTripMembersHook(tripId) {
     fetchMembers();
   }, [tripId]);
 
-  return { members, loading, error };
+  return { members, loading, error, groupNames, groupIds };
 }
 
 export default useTripMembersHook;
