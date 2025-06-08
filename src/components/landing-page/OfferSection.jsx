@@ -41,7 +41,7 @@ function OfferSection() {
                   alt="Linko mockup bluetooth page"
                   className="w-38 object-contain absolute -bottom-6 sm:bottom-14 h-full"
                 />
-                <FiWifi className="w-16 h-16 text-[#747474] rotate-[-135deg] top-31 absolute right-28" />
+                <FiWifi className="w-16 h-16 text-[#747474] rotate-[-135deg] top-31 absolute right-28 md:right-24" />
                 <img
                   src="/assets/images/fake-watch.png"
                   alt="Linko montre"

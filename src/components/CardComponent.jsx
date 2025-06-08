@@ -38,7 +38,7 @@ function CardComponent({
         <LuImage className="text-green-700 w-2/5 h-2/5" />
       </div>
       <div className="flex flex-col max-w-3/5">
-        <p className="font-bold">{title}</p>
+        <p className="font-semibold">{title}</p>
         <div className="flex text-sm gap-1 text-gray-500 flex-wrap">
           <p>{startDate}</p>
           <span>au</span>

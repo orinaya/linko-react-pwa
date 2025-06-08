@@ -10,11 +10,13 @@ function FooterSection() {
       <footer id="footer">
         <div className="bg-[#0162EF] text-white max-w-7xl pt-16 pb-6 mx-auto px-4 sm:px-6 lg:px-8 rounded-t-3xl">
           <div className="flex items-center justify-center mb-16">
-            <img
-              src="/assets/images/linko-white.png"
-              alt="Linko Logo"
-              className="w-70 h-auto object-contain"
-            />
+            <a href="/">
+              <img
+                src="/assets/images/linko-white.svg"
+                alt="Linko Logo"
+                className="md:w-50 h-auto w-30 lg:w-70 object-contain"
+              />
+            </a>
           </div>
           <div className="flex gap-8 justify-around flex-wrap lg:flex-nowrap text-center md:text-left sm:px-8">
             <div className="bg-[#0057FF] text-white">
