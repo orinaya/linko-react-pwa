@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import ProtectedRoute from '@/components/layout/ProtectedRoutes';
+import ConnectedMembersComponent from '@/components/ConnectedMembersComponent';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
@@ -37,6 +37,7 @@ export default function Locate() {
     // <ProtectedRoute>
     <div className="w-full h-screen">
       <Map></Map>
+      <ConnectedMembersComponent />
     </div>
     // </ProtectedRoute>
   );

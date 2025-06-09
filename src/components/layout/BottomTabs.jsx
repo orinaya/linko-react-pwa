@@ -22,7 +22,7 @@ const tabs = [
   { name: 'GroupsTabs', label: 'Groupes', path: '/groups' },
   { name: 'LocateTabs', label: 'Localiser', path: '/locate', isPrimary: true },
   { name: 'TripsTabs', label: 'Sorties', path: '/trips' },
-  { name: 'AlertTabs', label: 'Alertes', path: '/alert' },
+  { name: 'AlertTabs', label: 'Alertes', path: '/alerts' },
 ];
 
 export default function BottomTabs() {

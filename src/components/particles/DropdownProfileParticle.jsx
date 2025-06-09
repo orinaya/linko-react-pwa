@@ -27,7 +27,7 @@ function DropdownProfileParticle({ fullname, initials }) {
   return (
     <div className="relative" ref={menuRef}>
       <button
-        className="w-10 h-10 rounded-full bg-green-200 border-solid border-3 border-[#FF8F33] flex items-center justify-center"
+        className="w-10 h-10 rounded-full bg-green-200 border-solid flex items-center justify-center"
         onClick={() => setOpen(!open)}
       >
         <span className="text-green-700 font-bold">{initials}</span>
