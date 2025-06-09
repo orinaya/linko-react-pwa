@@ -36,14 +36,14 @@ function HomeNavbar() {
             title="Se connecter"
             variant="secondary"
             color="blue"
-            routeLink="/login"
+            routeLink="/auth/login"
             iconBefore={FiUser}
           />
           <ButtonParticle
             title="S'inscrire"
             variant="primary"
             color="blue"
-            routeLink="/signup"
+            routeLink="/auth/signup"
             iconBefore={FiUserPlus}
           />
         </div>
@@ -62,7 +62,7 @@ function HomeNavbar() {
                 title="Se connecter"
                 variant="secondary"
                 color="blue"
-                routeLink="/login"
+                routeLink="/auth/login"
                 iconBefore={FiUser}
                 justify="justify-start"
                 className="w-full px-4 py-2 mb-2"
@@ -71,7 +71,7 @@ function HomeNavbar() {
                 title="S'inscrire"
                 variant="primary"
                 color="blue"
-                routeLink="/signup"
+                routeLink="/auth/signup"
                 iconBefore={FiUserPlus}
                 justify="justify-start"
                 className="w-full px-4 py-2"

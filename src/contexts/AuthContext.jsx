@@ -82,6 +82,21 @@ const authFactory = (previousState, dispatch, router) => ({
       handleError(dispatch, error)
     }
   },
+  loginWithProvider: async (provider) => {
+    dispatch({ type: actionTypes.LOADING });
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/login`
+        }
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      handleError(dispatch, error);
+    }
+  },
   register: async (user) => {
     dispatch({
       type: actionTypes.LOADING
@@ -142,6 +157,7 @@ const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
   const [isInitialized, setIsInitialized] = useState(false)
   const router = useRouter()
+  const actions = authFactory(state, dispatch, router);
   const pathname = usePathname()
 
   // Charge l'état depuis localStorage côté client
@@ -231,7 +247,7 @@ const AuthProvider = ({ children }) => {
         loading: state.loading,
         isLoggedIn: state.isLoggedIn,
         error: state.error,
-        ...authFactory(state, dispatch, router)
+        ...actions
       }}
     >
       {children}

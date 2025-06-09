@@ -1,8 +1,11 @@
 'use client'
-import { useAuth } from '@/contexts/AuthContext'
-import { supabase } from '@/services/api'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/services/api'
+import { useAuth } from '@/contexts/AuthContext'
+import { FaCheck } from 'react-icons/fa'
+import ButtonParticle from '@/components/particles/ButtonParticle'
+import RegisterFormParticle from '@/components/particles/RegisterFormParticle'
 
 function CreateProfile() {
   const { user } = useAuth()
@@ -38,21 +41,26 @@ function CreateProfile() {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Créer votre profil</h1>
-      <input
+    <div className="">
+      <h2 className="text-xl font-semibold text-center text-white mb-6">Création d'un profil</h2>
+      <RegisterFormParticle
+        label="Nom du profil"
         type="text"
-        placeholder="Nom du profil"
+        id="name"
+        name="name"
+        placeholder="Entrez un nom de profil"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border p-2 rounded w-full mb-4"
+        className='mb-4 w-full'
       />
-      <button
+      <ButtonParticle
+        title="Enregistrer"
+        variant="secondary"
+        color="orange"
+        className="w-full mb-8"
         onClick={handleCreate}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Créer le profil
-      </button>
+        iconBefore={FaCheck}
+      />
     </div>
   )
 }

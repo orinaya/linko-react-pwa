@@ -8,6 +8,8 @@ const buttonStyles = {
   secondary: {
     blue: "bg-white text-[#0162EF] border border-[#0162EF] hover:bg-[#DBEAFF] hover:text-[#0053CC] hover:border-[#0053CC]",
     orange: "bg-white text-[#FF7401] border border-[#FF7401] hover:bg-[#FFE9D6] hover:text-[#CC5C00] hover:border-[#CC5C00]",
+    neutral: "bg-white text-black border border-[#0162EF] hover:bg-[#DBEAFF] hover:text-[#0053CC] hover:border-[#0053CC]",
+    facebook: "bg-[#1877F2] text-white border border-white hover:bg-[#DBEAFF] hover:text-[#0053CC] hover:border-white"
   },
   tertiary: {
     orange: "bg-[#FFE3CC] text-[#FF7401] hover:bg-[#FFC799] hover:text-[#CC5C00]",
@@ -17,6 +19,7 @@ const buttonStyles = {
     orange: "bg-transparent text-[#FF7401] hover:bg-[#FFE9D6] hover:text-[#CC5C00] hover:border-[#CC5C00]",
     danger: "bg-transparent text-red-500 hover:bg-red-100 hover:text-red-700",
     neutral: "bg-transparent text-gray-900 hover:bg-gray-100 hover:text-gray-700",
+    white: "bg-transparent text-white hover:bg-white/10",
   }
 }
 
@@ -49,18 +52,6 @@ function ButtonParticle({
       </>
     );
 
-    if (onClick) {
-      return (
-        <button
-          type="button"
-          className={`${baseClasses} ${variantClasses} ${className}`}
-          onClick={onClick}
-        >
-          {content}
-        </button>
-      );
-    }
-
     if (routeLink) {
       return (
         <Link
@@ -73,7 +64,16 @@ function ButtonParticle({
       );
     }
 
-    return null;
+    return (
+      <button
+        type={onClick ? "button" : "submit"}
+        className={`${baseClasses} ${variantClasses} ${className}`}
+        onClick={onClick}
+      >
+        {content}
+      </button>
+    );
+
   }
 }
 

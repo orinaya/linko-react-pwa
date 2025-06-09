@@ -83,7 +83,7 @@ function ReviewsSection() {
               title="S'inscrire"
               variant="secondary"
               color="orange"
-              routeLink="/signup"
+              routeLink="/auth/signup"
               className="w-fit"
               iconBefore={FiUserPlus}
             />

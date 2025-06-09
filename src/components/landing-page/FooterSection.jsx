@@ -32,7 +32,7 @@ function FooterSection() {
                   title="S'inscrire"
                   variant="primary"
                   color="orange"
-                  routeLink="/signup"
+                  routeLink="/auth/signup"
                   className="w-full lg:w-full md:w-fit"
                   iconBefore={FiUserPlus}
                 />
@@ -40,7 +40,7 @@ function FooterSection() {
                   title="Se connecter"
                   variant="secondary"
                   color="orange"
-                  routeLink="/login"
+                  routeLink="/auth/login"
                   className="w-full lg:w-full md:w-fit"
                   iconBefore={FiUser}
                 />
@@ -107,10 +107,10 @@ function FooterSection() {
                 © 2025 Linko. Tous droits réservés.
               </div>
               <div className="flex space-x-6 text-white text-sm">
-                <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-                <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
-                <a href="#" className="hover:text-white transition-colors">CGU</a>
-                <a href="#" className="hover:text-white transition-colors">CGV</a>
+                <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
+                <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a>
+                <a href="/conditions-generales-d-utilisation" className="hover:text-white transition-colors">CGU</a>
+                <a href="/conditions-generales-de-vente" className="hover:text-white transition-colors">CGV</a>
               </div>
             </div>
           </div>

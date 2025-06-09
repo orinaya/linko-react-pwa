@@ -3,11 +3,11 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { useProfiles } from '@/contexts/ProfileContext';
-import { useState } from 'react';
 import ButtonParticle from '../particles/ButtonParticle';
 import ProfileSelectParticle from '../particles/ProfileSelectParticle';
 import DropdownProfileParticle from '../particles/DropdownProfileParticle';
 import { IoIosArrowBack } from 'react-icons/io';
+import { IoArrowBackCircle } from 'react-icons/io5';
 
 function HeaderComponent() {
   const pathname = usePathname();
@@ -23,10 +23,12 @@ function HeaderComponent() {
   const isDynamicPage = pathSegments.length > 1;
 
   const showHeader = pathname !== '/';
-  const hideLogo = ['/', '/locate', '/account'].includes(pathname);
-  const showBackButton = isDynamicPage || pathname === '/account';
-  const showProfileDropdown = pathname !== '/';
+  const hideLogo = ['/', '/locate', '/account', '/auth/login', '/auth/signup', '/create-profile'].includes(pathname);
+  const hideProfileDropdownOn = ['/', '/auth/login', '/auth/signup', '/create-profile', '/locate'];
+  const showProfileDropdown = !hideProfileDropdownOn.includes(pathname);
   const showTitleAndProfile = pathname === '/home';
+  const showBackButtonOn = ['/auth/login', '/auth/signup', '/create-profile', '/account'];
+  const showBackButton = showBackButtonOn.includes(pathname);
 
   const pageTitles = {
     '/home': `Bienvenue, ${firstname}`,
@@ -55,10 +57,10 @@ function HeaderComponent() {
           <ButtonParticle
             title="Retour"
             variant="ghost"
-            color="blue"
+            color={['/auth/login', '/auth/signup', '/create-profile'].includes(pathname) ? 'white' : 'blue'}
             onClick={() => router.back()}
             className="w-fit"
-            iconBefore={IoIosArrowBack}
+            iconBefore={['/auth/login', '/auth/signup'].includes(pathname) ? IoArrowBackCircle : IoIosArrowBack}
           />
         ) : showTitleAndProfile ? (
           <div className="flex flex-col items-start justify-center">
