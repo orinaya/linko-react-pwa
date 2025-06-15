@@ -19,17 +19,17 @@ export default function FAQ() {
         <HomeNavbar />
 
         <div className="text-center mb-16 mt-16">
-          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
+          <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
             Notre Foire aux
             <br />
             <span className="text-4xl sm:text-6xl text-[#FF7401] h-[70px] bg-[#ff9d4c]/20 rounded-xl px-4">Questions</span>
-          </h2>
+          </h1>
         </div>
 
         <div className="max-w-7xl mx-auto bg-white border-2 border-solid border-[#F4F1EE] rounded-lg p-8 mb-32">
           {faqCategories.map((category, index) => (
             <div key={index} className="mb-10">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">{category.title}</h3>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">{category.title}</h2>
               <div className="space-y-4">
                 {category.items.map((item) => (
                   <div key={item.id} className="border border-gray-200 rounded-lg overflow-hidden">

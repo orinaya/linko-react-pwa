@@ -20,7 +20,7 @@ function HeaderComponent() {
   const initials = firstname[0]?.toUpperCase() + lastname[0]?.toUpperCase();
   const email = user?.email || ''
 
-  const hideHeader = ['/', '/locate', '/foire-aux-questions']
+  const hideHeader = ['/', '/locate', '/foire-aux-questions', '/mentions-legales', '/politique-de-confidentialite', '/conditions-generales-d-utilisation', '/conditions-generales-de-vente'];
   const showHeader = !hideHeader.includes(pathname);
 
   const hideLogo = ['/', '/locate', '/account', '/auth/login', '/auth/signup', '/create-profile'].includes(pathname);

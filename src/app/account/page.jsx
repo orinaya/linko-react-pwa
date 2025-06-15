@@ -100,6 +100,21 @@ const settingsSections = [
       },
     ],
   },
+  {
+    title: 'Conditions générales',
+    items: [
+      {
+        label: 'Politique de confidentialité',
+        icon: <FiShield />,
+        href: '/politique-de-confidentialite',
+      },
+      {
+        label: 'Conditions générales d’utilisation',
+        icon: <FiShield />,
+        href: '/conditions-generales-d-utilisation',
+      },
+    ],
+  },
 ];
 
 

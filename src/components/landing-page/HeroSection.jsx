@@ -4,7 +4,7 @@ import { FiSettings, FiZap } from "react-icons/fi";
 function HeroSection() {
   return (
     <>
-      <section className="py-0 sm:py-20" id="hero">
+      <section className="py-0 sm:py-24" id="hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="order-1 md:order-none flex flex-col justify-start items-start gap-8">
