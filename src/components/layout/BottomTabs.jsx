@@ -27,7 +27,17 @@ const tabs = [
 
 export default function BottomTabs() {
   const pathname = usePathname();
-  const hiddenTabRoutes = ['/', '/auth/login', '/auth/signup', '/create-profile', '/mentions-legales', '/conditions-generales-de-vente', '/conditions-generales-d-utilisation', '/politique-de-confidentialite'];
+  const hiddenTabRoutes =
+    ['/',
+      '/auth/login',
+      '/auth/signup',
+      '/create-profile',
+      '/mentions-legales',
+      '/conditions-generales-de-vente',
+      '/conditions-generales-d-utilisation',
+      '/politique-de-confidentialite',
+      '/foire-aux-questions'
+    ];
 
   const shouldShowTabs = !hiddenTabRoutes.includes(pathname);
   return (

@@ -8,10 +8,12 @@ function LayoutProviders({ children }) {
   const pathname = usePathname();
 
   const isAuthPage = pathname === "/auth/login" || pathname === "/auth/signup" || pathname === "/create-profile";
+  const noPaddingRoutes = ['/locate', '/', '/foire-aux-questions']
+  const isNoPaddingRoute = !noPaddingRoutes.includes(pathname);
 
   const wrapperClass = isAuthPage
     ? "p-6 h-dvh bg-[#0162EF]"
-    : pathname !== "/" && pathname !== "/locate"
+    : isNoPaddingRoute
       ? "m-6 pb-28"
       : "m-0 h-dvh relative";
 

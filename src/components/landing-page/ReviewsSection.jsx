@@ -5,7 +5,7 @@ function ReviewsSection() {
   return (
     <>
       <section className="py-10 sm:py-20" id="reviews">
-        <div className="flex flex-col-reverse lg:flex-row justify-center gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col-reverse lg:flex-row justify-center gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
           <div className="flex flex-col justify-center items-center gap-4">
             <div className="flex flex-col gap-8 text-center">
               <div className="max-w-[480px] bg-[#F6F6F6] border-2 border-solid border-[#F1ECE9] p-6 rounded-xl flex gap-4 items-center justify-center">

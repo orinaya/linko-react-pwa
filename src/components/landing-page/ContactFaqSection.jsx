@@ -165,7 +165,7 @@ function ContactFaqSection() {
                 title="Voir plus de questions"
                 variant="tertiary"
                 color="orange"
-                routeLink="/"
+                routeLink="/foire-aux-questions"
                 className="w-fit"
                 iconBefore={FiEye}
               />

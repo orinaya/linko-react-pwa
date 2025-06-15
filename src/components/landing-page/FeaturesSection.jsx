@@ -4,7 +4,7 @@ import ButtonParticle from "../particles/ButtonParticle";
 function FeatureSection() {
   return (
     <section className="py-10 sm:py-20 relative overflow-hidden" id="features">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between items-auto sm:items-center gap-6 flex-col lg:flex-row">
           <div className="bg-[#0057FF] text-white px-8 py-20 rounded-xl">
             <h2 className="font-grenadine text-2xl sm:text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">

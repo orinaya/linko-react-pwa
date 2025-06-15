@@ -18,13 +18,16 @@ function HeaderComponent() {
   const firstname = user?.user_metadata?.firstname || 'utilisateur';
   const lastname = user?.user_metadata?.lastname || 'utilisateur';
   const initials = firstname[0]?.toUpperCase() + lastname[0]?.toUpperCase();
+  const email = user?.email || ''
 
-  const pathSegments = pathname.split('/').filter(Boolean);
+  const hideHeader = ['/', '/locate', '/foire-aux-questions']
+  const showHeader = !hideHeader.includes(pathname);
 
-  const showHeader = pathname !== '/' && pathname !== '/locate';
   const hideLogo = ['/', '/locate', '/account', '/auth/login', '/auth/signup', '/create-profile'].includes(pathname);
+
   const hideProfileDropdownOn = ['/', '/auth/login', '/auth/signup', '/create-profile', '/locate'];
   const showProfileDropdown = !hideProfileDropdownOn.includes(pathname);
+
   const showBackButtonOn = ['/auth/login', '/auth/signup', '/create-profile', '/account',];
   const showBackButton =
     showBackButtonOn.includes(pathname) ||
@@ -84,7 +87,7 @@ function HeaderComponent() {
         )}
         {showProfileDropdown && (
           <div className='absolute right-6 top-6'>
-            <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} />
+            <DropdownProfileParticle initials={initials} fullname={`${firstname} ${lastname}`} email={email} />
           </div>
         )}
       </div>
