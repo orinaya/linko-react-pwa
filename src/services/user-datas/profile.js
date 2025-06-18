@@ -55,30 +55,60 @@ async function getGroupsByProfileId(profileId) {
   return groups;
 }
 
+// async function getMembersByProfileId(profileId) {
+//   const {data, error} = await supabase
+//     .from("Profile_Member")
+//     .select("member_id, Member(*)")
+//     .eq("profile_id", profileId);
+
+//   if (error) throw error;
+
+//   const members =
+//     data?.map((pm) => {
+//       const member = pm.Member;
+//       const avatarPath = member.avatar || "penguin.png";
+
+//       const cleanPath = avatarPath.startsWith("/") ? avatarPath.slice(1) : avatarPath;
+
+//       const {data: urlData} = supabase.storage.from("avatar").getPublicUrl(cleanPath);
+//       const publicUrl = urlData?.publicUrl;
+//       return {
+//         ...member,
+//         avatarUrl: publicUrl,
+//       };
+//     }) ?? [];
+
+//   return members;
+// }
+
 async function getMembersByProfileId(profileId) {
   const {data, error} = await supabase
     .from("Profile_Member")
-    .select("member_id, Member(*)")
+    .select("member_id, Member(*, roles:Member_Role(role_id))")
     .eq("profile_id", profileId);
 
   if (error) throw error;
 
-  const members =
-    data?.map((pm) => {
+  const members = await Promise.all(
+    (data ?? []).map(async (pm) => {
       const member = pm.Member;
-      const avatarPath = member.avatar || "penguin.png";
+      if (!member) return null;
 
+      const avatarPath = member.avatar || "penguin.png";
       const cleanPath = avatarPath.startsWith("/") ? avatarPath.slice(1) : avatarPath;
 
       const {data: urlData} = supabase.storage.from("avatar").getPublicUrl(cleanPath);
       const publicUrl = urlData?.publicUrl;
+
       return {
         ...member,
         avatarUrl: publicUrl,
+        roleIds: member.roles?.map((r) => r.role_id) || [],
       };
-    }) ?? [];
+    })
+  );
 
-  return members;
+  return members.filter(Boolean);
 }
 
 async function getTripsByProfileId(profileId) {

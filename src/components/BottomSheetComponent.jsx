@@ -5,7 +5,7 @@ import { IoClose } from 'react-icons/io5';
 import { useEffect } from 'react';
 import ButtonParticle from './particles/ButtonParticle';
 
-export default function BottomSheetComponent({ isOpen, onClose, children }) {
+export default function BottomSheetComponent({ isOpen, onClose, children, title = 'Titre' }) {
 
   // Close the bottom sheet
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function BottomSheetComponent({ isOpen, onClose, children }) {
             <div className="flex flex-col items-center p-4">
               <div className="w-12 h-1.5 bg-gray-300 rounded-full mb-2" />
               <div className='flex items-center justify-between w-full my-6'>
-                <h2 className=" text-xl font-semibold">Créer une sortie</h2>
+                <h2 className=" text-xl font-semibold">{title}</h2>
                 <ButtonParticle onClick={onClose} aria-label="Fermer" iconCenter={IoClose} />
               </div>
             </div>

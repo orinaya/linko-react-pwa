@@ -23,14 +23,27 @@ function HomeNavbar() {
   return (
     <header id="home-navbar">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 flex justify-between items-center h-20">
-        <a href="/">
-          <img
-            src="/assets/images/linko-blue.svg"
-            alt="Linko Logo"
-            className="w-20 h-auto object-contain"
-          />
-        </a>
+        <div className='flex items-stretch gap-12 justify-start'>
+          <a href="/">
+            <img
+              src="/assets/images/linko-blue.svg"
+              alt="Linko Logo"
+              className="w-20 h-auto object-contain"
+            />
+          </a>
 
+          <div className='lg:flex items-end gap-8 hidden sm:flex'>
+            <a href='/' className="text-lg font-normal ">
+              Accueil
+            </a>
+            <a href='/' className="text-lg font-normal ">
+              À propos
+            </a>
+            <a href='/' className="text-lg font-normal ">
+              Le blog
+            </a>
+          </div>
+        </div>
         <div className="hidden sm:flex flex-row items-center gap-4">
           <ButtonParticle
             title="Se connecter"
@@ -80,7 +93,7 @@ function HomeNavbar() {
           )}
         </div>
       </div>
-    </header>
+    </header >
   );
 }
 
