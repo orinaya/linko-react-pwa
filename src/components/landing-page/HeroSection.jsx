@@ -1,3 +1,4 @@
+import { FaApple, FaGooglePlay } from "react-icons/fa";
 import ButtonParticle from "../particles/ButtonParticle";
 import { FiSettings, FiZap } from "react-icons/fi";
 
@@ -35,19 +36,27 @@ function HeroSection() {
                   iconBefore={FiSettings}
                 />
               </div>
+              <div className="flex gap-6">
+                <ButtonParticle
+                  title="Télécharger iOS"
+                  variant="secondary"
+                  color="blue"
+                  routeLink="https://apps.apple.com/app/idXXXXXXXXX"
+                  className="px-5 py-3 rounded-lg hover:bg-[#e6e6e6] transition"
+                  iconBefore={FaApple}
+                  target="_blank"
+                />
+                <ButtonParticle
+                  title="Télécharger Android"
+                  variant="secondary"
+                  color="blue"
+                  routeLink="https://play.google.com/store/apps/details?id=XXXXXXXXX"
+                  className="px-5 py-3 rounded-lg hover:bg-[#e6e6e6] transition"
+                  iconBefore={FaGooglePlay}
+                  target="_blank"
+                />
+              </div>
             </div>
-            {/* <div className="relative flex justify-center items-center mt-10 ">
-              <img
-                src="/assets/images/mockup-phone-map.png"
-                alt="Mockup"
-                className="w-44 sm:w-64 h-auto z-10"
-              />
-              <img
-                src="/assets/images/mockup-phone-home.png"
-                alt="Mockup"
-                className="absolute w-40 left-28  top-12 "
-              />
-            </div> */}
 
             <div className="relative flex space-x-4">
               <div className="ml-10 md:ml-0 lg:ml-initial rounded-3xl p-4 transform rotate-0 z-10">

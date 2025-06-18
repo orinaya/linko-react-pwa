@@ -1,8 +1,8 @@
 'use client'
 
 import { FiMail, FiPhone, FiUser, FiUserPlus } from "react-icons/fi";
+import { FaArrowUp, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaApple, FaGooglePlay, FaYoutube } from "react-icons/fa";
 import ButtonParticle from "../particles/ButtonParticle";
-import { FaArrowUp } from "react-icons/fa";
 
 function FooterSection() {
   return (
@@ -18,8 +18,8 @@ function FooterSection() {
               />
             </a>
           </div>
-          <div className="flex gap-8 justify-around flex-wrap lg:flex-nowrap text-center md:text-left sm:px-8">
-            <div className="bg-[#0057FF] text-white">
+          <div className="flex gap-8 justify-around flex-wrap lg:flex-nowrap text-center items-baseline md:text-left sm:px-8">
+            <div className=" text-white p-6 rounded-lg">
               <h2 className="font-grenadine text-3xl font-bold mb-6 leading-[1.8] min-w-[316px]">
                 Testez dès maintenant
                 <br />
@@ -50,8 +50,7 @@ function FooterSection() {
               <h3 className="font-semibold mb-4">Entreprise</h3>
               <ul className="space-y-2 text-white">
                 <li><a href="#" className="hover:text-white transition-colors">À propos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Carrières</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Presse</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Le blog</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Partenaires</a></li>
               </ul>
             </div>
@@ -82,11 +81,53 @@ function FooterSection() {
                 <li><a href="#" className="hover:text-white transition-colors">Centre d'aide</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Statut système</a></li>
               </ul>
             </div>
 
 
+          </div>
+          <div className="mt-12 flex items-center gap-8 justify-center">
+            <div>
+              <h3 className="font-semibold mb-4 text-white text-center text-lg">Suivez-nous sur les réseaux sociaux</h3>
+              <div className="flex justify-center gap-6 text-white text-xl">
+                <a
+                  href="https://facebook.com/linko"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="hover:text-[#3b5998] transition-colors"
+                >
+                  <FaFacebookF />
+                </a>
+                <a
+                  href="https://youtube.com/linko"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Youtube"
+                  className="hover:text-[#FF0000] transition-colors"
+                >
+                  <FaYoutube />
+                </a>
+                <a
+                  href="https://www.instagram.com/linko_school/?hl=fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="hover:text-[#e1306c] transition-colors"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://linkedin.com/company/linko"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="hover:text-[#0077b5] transition-colors"
+                >
+                  <FaLinkedinIn />
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="w-full flex justify-center my-16">
@@ -99,7 +140,6 @@ function FooterSection() {
               iconBefore={FaArrowUp}
             />
           </div>
-
 
           <div className="border-t border-blue-500 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
