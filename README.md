@@ -15,7 +15,7 @@
 1. [Notre Équipe](#-1-notre-équipe)
 2. [Description](#-2-description)
 3. [Stack technique](#-3-stack-technique)
-4. [Fonctonnaliés](#4-fonctionnalités)
+4. [Fonctionnaliés](#4-fonctionnalités)
 5. [Tester le projet](#-5-tester-le-projet)
 6. [Architecture du projet](#-6-architecture-du-projet)
 7. [Références](#7-références)
@@ -57,31 +57,15 @@ encadrants mais aussi garantir la sécurité des plus petits.
 
 ### 4.1 Localisation
 
-Navigation fluide entre les écrans via un système de navigation
-
-<img src="assets/images/Comet-5.gif" alt="comet-gif" width="200"/>
+<img src="public/assets/images/linko-localisation.jpg" alt="comet-gif" width="200"/>
 
 ### 4.2 Écran d'accueil
 
-| Accueil                   | Hubble                                               |
-| ------------------------- | ---------------------------------------------------- |
-| Lien vers la page Planète | Carousel d'images issues du télescope spatial Hubble |
-
-<img src="assets/images/Comet-1.gif" alt="comet-gif" width="200"/>
-<img src="assets/images/Comet-2.gif" alt="comet-gif" width="200"/>
-
 ### 4.3 Gestion des sorties
 
-| Liste des planètes            | Détail d'une planète                                                                                     |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Flat List animée des planètes | Au clic sur une planète, l’utilisateur accède à une fiche détaillée contenant des informations enrichies |
+### 4.4 Gestion des groupes
 
-<img src="assets/images/Comet-3.gif" alt="comet-gif" width="200"/>
-<img src="assets/images/Comet-4.gif" alt="comet-gif" width="200"/>
-
-### 4.3 Gestion des groupes
-
-### 4.4 Gestion des alertes
+### 4.5 Gestion des alertes
 
 ## ✅ 5. Tester le projet
 
@@ -90,10 +74,7 @@ Maintenant que vous savez tout de nous, laissez-vous guider pas à pas ! ✨
 ### 5.1 Prérequis
 
 - Node.js ≥ 18
-- Android Studio et/ou simulateur ou appareil réel
-- React Native CLI (déjà inclus dans les dépendances)
-
-> **Note** : assurez-vous d’avoir terminé le guide [Configurer votre environnement](https://reactnative.dev/docs/set-up-your-environment) avant de continuer.
+- yarn
 
 ### 5.2 Installer le projet
 
@@ -101,10 +82,10 @@ Maintenant que vous savez tout de nous, laissez-vous guider pas à pas ! ✨
 
 ```bash
 # HTTPS
-git clone https://github.com/orinaya/comet-react-native-app.git
+git clone https://github.com/orinaya/linko-react-pwa.git
 
 # SSH
-git clone git@github.com:orinaya/comet-react-native-app.git
+git clone git@github.com:orinaya/linko-react-pwa.git
 ```
 
 📦 **Installez les modules**
@@ -115,40 +96,10 @@ yarn install
 
 ### 5.3 Lancer le projet
 
-> 💡 **À savoir**
->
-> Vous pouvez exécuter l’application sur un appareil Android (via USB) ou dans un émulateur Android Studio.
->
-> 📱 **Sur téléphone** : Activez le mode développeur et le débogage USB dans les options de votre appareil. Branchez-le ensuite à votre ordinateur via USB. Vous pouvez vérifier que votre appareil est connecté grâce à la commande :
->
-> ```
-> adb devices
-> ```
->
-> Si votre appareil est bien connecté :
->
-> ```
-> List of devices attached
-> [NUMERO]     device
-> ```
->
-> 💻 **Sur émulateur** : Lancez un appareil virtuel depuis Android Studio > Device Manager, avant d’exécuter la commande yarn android.
-
-▶️ **Lancer Metro**
-
-Tout d'abord, vous devez lancer **Metro**, l’outil de build JavaScript utilisé par React Native.
-Pour démarrer le serveur de développement Metro, exécutez la commande suivante à la racine du projet :
+Pour démarrer le serveur de développement, exécutez la commande suivante à la racine du projet :
 
 ```bash
-yarn start
-```
-
-▶️ **Compiler et exécuter l'application**
-
-Avec Metro en cours d’exécution, ouvrez un nouveau terminal (ou un autre onglet) à la racine du projet, puis lancez l’une des commandes suivantes pour construire et exécuter votre application :
-
-```bash
-yarn android
+yarn dev
 ```
 
 🔐 Il vous faudra ensuite créer à la racine du projet un fichier `.env` à partir du fichier `.env.example`
@@ -156,6 +107,8 @@ yarn android
 ```bash
 cp .env.example .env
 ```
+
+L'envrionnement de développement sera disponible sur à l'url : http://localhost:3000
 
 ## 📂 6. Architecture du projet
 
@@ -173,19 +126,7 @@ linko-react-pwa
 ├─ README.md
 ├─ src
 │  ├─ app # contient toutes les pages naviguables
-│  │  ├─ account/
-│  │  ├─ alerts/
-│  │  ├─ auth/
-│  │  ├─ conditions-generales-d-utilisation/
-│  │  ├─ conditions-generales-de-vente/
-│  │  ├─ create-profile/
-│  │  ├─ foire-aux-questions/
-│  │  ├─ groups/
-│  │  ├─ home/
-│  │  ├─ locate/
-│  │  ├─ mentions-legales/
-│  │  ├─ politique-de-confidentialite/
-│  │  ├─ settings/
+│  │  ├─ ....
 │  │  ├─ trips/
 │  │  ├─ layout.js # layout global
 │  │  ├─ page.js #landing lien => "/"
@@ -204,7 +145,17 @@ linko-react-pwa
 └─ yarn.lock
 ```
 
-## 7. Références
+## 7. Documentation
+
+    Figma : maquettes + annexes → Lien Figma
+
+## 8. Remarques
+
+    Le projet est en phase MVP
+
+    Les fonctionnalités de bracelet BLE sont en cours d’intégration
+
+## 9. Références
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
